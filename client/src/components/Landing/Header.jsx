@@ -13,13 +13,14 @@ const useStyles = makeStyles((theme) => ({
 	},
 
 	headerLogo: {
-		height: "4vh",
-		width: "4vw",
+		height: "8vh",
+		width: "8vw",
 	},
 
 	headerLink: {
 		marginLeft: "1vw",
 		marginRight: "1vw",
+		color: theme.palette.primary.contrastText,
 	},
 }));
 
@@ -31,7 +32,7 @@ export default function Header() {
 				<Toolbar>
 					<div className={classes.headerLogoContainer}>
 						<img
-							src={require("../../images/placeholderlogo.png")}
+							src={require("../../images/LandingSvgs/headerLogo.svg")}
 							alt="HTNE Beyond Logo"
 							className={classes.headerLogo}
 						/>
