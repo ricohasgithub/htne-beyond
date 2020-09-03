@@ -1,13 +1,18 @@
 import React from "react";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import {
+	createMuiTheme,
+	responsiveFontSizes,
+	ThemeProvider,
+} from "@material-ui/core/styles";
 
 // Custom components
 import Landing from "./components/Landing/Landing";
-import AboutUs from "./components/AboutUs/AboutUs";
-import Tracks from "./components/Tracks/Tracks";
-import Speakers from "./components/Speakers/Speakers";
+import SideMenu from "./components/Landing/SideMenu";
+// import AboutUs from "./components/AboutUs/AboutUs";
+// import Tracks from "./components/Tracks/Tracks";
+// import Speakers from "./components/Speakers/Speakers";
 
-const theme = createMuiTheme({
+let theme = createMuiTheme({
 	palette: {
 		primary: {
 			main: "#0C2648",
@@ -16,23 +21,31 @@ const theme = createMuiTheme({
 	},
 });
 
+theme = responsiveFontSizes(theme);
+
 function App() {
+	const [sideMenuOpen, setSideMenuOpen] = React.useState(false);
+
+	const sideMenuClickHandler = () => {
+		setSideMenuOpen(!sideMenuOpen);
+	};
+
 	return (
 		<ThemeProvider theme={theme}>
 			<div className="App" style={{ width: "100%", height: "100%" }}>
-				<Landing />
+				<Landing sideMenuClickHandler={sideMenuClickHandler} />
 
-				<section id="aboutus">
+				<SideMenu
+					sideMenuClickHandler={sideMenuClickHandler}
+					show={sideMenuOpen}
+				/>
+				{/* <section id="aboutus">
 					<AboutUs />
 				</section>
 
 				<section id="tracks">
 					<Tracks />
-				</section>
-
-				<section id="speakers">
-					<Speakers />
-				</section>
+				</section> */}
 			</div>
 		</ThemeProvider>
 	);

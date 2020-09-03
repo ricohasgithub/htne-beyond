@@ -1,5 +1,12 @@
 import React from "react";
-import { AppBar, Toolbar, Typography } from "@material-ui/core";
+import {
+	AppBar,
+	Toolbar,
+	Typography,
+	useMediaQuery,
+	IconButton,
+} from "@material-ui/core";
+import Menu from "@material-ui/icons/Menu";
 import { makeStyles } from "@material-ui/core/styles";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
@@ -15,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
 	headerLogo: {
 		height: "8vh",
 		width: "8vw",
+		minWidth: "50px",
+		minHeight: "50px",
+		paddingTop: "10px",
 	},
 
 	headerLink: {
@@ -22,9 +32,15 @@ const useStyles = makeStyles((theme) => ({
 		marginRight: "1vw",
 		color: theme.palette.primary.contrastText,
 	},
+
+	menuIcon: {
+		height: "8vh",
+		width: "8vh",
+		color: "#FFFFFF",
+	},
 }));
 
-export default function Header() {
+const DesktopHeader = () => {
 	const classes = useStyles();
 	return (
 		<div>
@@ -65,4 +81,37 @@ export default function Header() {
 			</AppBar>
 		</div>
 	);
+};
+
+const MobileHeader = ({ sideMenuClickHandler }) => {
+	const classes = useStyles();
+
+	return (
+		<div>
+			<AppBar color={"transparent"} elevation={0} position="relative">
+				<Toolbar>
+					<div className={classes.headerLogoContainer}>
+						<img
+							src={require("../../images/LandingSvgs/headerLogo.svg")}
+							alt="HTNE Beyond Logo"
+							className={classes.headerLogo}
+						/>
+					</div>
+					<IconButton onClick={sideMenuClickHandler}>
+						<Menu className={classes.menuIcon} />
+					</IconButton>
+				</Toolbar>
+			</AppBar>
+		</div>
+	);
+};
+
+export default function Header({ sideMenuClickHandler }) {
+	const matches = useMediaQuery("(min-width:600px)");
+
+	if (matches) {
+		return <DesktopHeader />;
+	} else {
+		return <MobileHeader sideMenuClickHandler={sideMenuClickHandler} />;
+	}
 }

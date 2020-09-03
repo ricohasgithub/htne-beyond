@@ -8,7 +8,6 @@ import Header from "./Header";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		height: "100vh",
 		backgroundColor: theme.palette.primary.main,
 		color: theme.palette.primary.contrastText,
 	},
@@ -55,11 +54,11 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function Landing() {
+export default function Landing({ sideMenuClickHandler }) {
 	const classes = useStyles();
 	return (
 		<div className={classes.root}>
-			<Header />
+			<Header sideMenuClickHandler={sideMenuClickHandler} />
 			<img
 				src={require("../../images/LandingSvgs/landingCurves.svg")}
 				alt="Landing page curves"
