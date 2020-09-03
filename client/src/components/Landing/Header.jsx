@@ -7,7 +7,7 @@ import {
 	IconButton,
 } from "@material-ui/core";
 import Menu from "@material-ui/icons/Menu";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
 const useStyles = makeStyles((theme) => ({
@@ -42,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
 
 const DesktopHeader = () => {
 	const classes = useStyles();
+
 	return (
 		<div>
 			<AppBar color={"transparent"} elevation={0} position="relative">
@@ -107,7 +108,8 @@ const MobileHeader = ({ sideMenuClickHandler }) => {
 };
 
 export default function Header({ sideMenuClickHandler }) {
-	const matches = useMediaQuery("(min-width:600px)");
+	const theme = useTheme();
+	const matches = useMediaQuery(theme.breakpoints.up("sm"));
 
 	if (matches) {
 		return <DesktopHeader />;

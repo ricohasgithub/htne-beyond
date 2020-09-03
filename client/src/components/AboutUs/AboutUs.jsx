@@ -41,7 +41,7 @@ export default function AboutUs() {
 	const classes = useStyles();
 	return (
 		<div>
-			<img
+			{/* <img
 				src={require("../../images/AboutUsSvgs/Satellite1.svg")}
 				alt="Satellite"
 				className={classes.satellite1}
@@ -67,7 +67,7 @@ export default function AboutUs() {
 				src={require("../../images/CloudSvgs/Cloud3.svg")}
 				alt="Cloud"
 				className={classes.cloud3}
-			/>
+			/> */}
 			<Grid container className={classes.root}>
 				<Grid item xs={2} sm={4} />
 

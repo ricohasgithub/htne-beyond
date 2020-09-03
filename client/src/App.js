@@ -8,7 +8,7 @@ import {
 // Custom components
 import Landing from "./components/Landing/Landing";
 import SideMenu from "./components/Landing/SideMenu";
-// import AboutUs from "./components/AboutUs/AboutUs";
+import AboutUs from "./components/AboutUs/AboutUs";
 // import Tracks from "./components/Tracks/Tracks";
 // import Speakers from "./components/Speakers/Speakers";
 
@@ -39,13 +39,13 @@ function App() {
 					sideMenuClickHandler={sideMenuClickHandler}
 					show={sideMenuOpen}
 				/>
-				{/* <section id="aboutus">
+				<section id="aboutus">
 					<AboutUs />
 				</section>
 
-				<section id="tracks">
+				{/* <section id="tracks">
 					<Tracks />
-				</section> */}
+				</section>  */}
 			</div>
 		</ThemeProvider>
 	);
