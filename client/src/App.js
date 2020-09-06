@@ -9,8 +9,11 @@ import {
 import Landing from "./components/Landing/Landing";
 import SideMenu from "./components/Landing/SideMenu";
 import AboutUs from "./components/AboutUs/AboutUs";
-// import Tracks from "./components/Tracks/Tracks";
-// import Speakers from "./components/Speakers/Speakers";
+import Tracks from "./components/Tracks/Tracks";
+import Speakers from "./components/Speakers/Speakers";
+import FAQ from "./components/FAQ/FAQ";
+import Team from "./components/Team/Team";
+import Sponsors from "./components/Sponsors/Sponsors";
 
 let theme = createMuiTheme({
 	palette: {
@@ -43,9 +46,25 @@ function App() {
 					<AboutUs />
 				</section>
 
-				{/* <section id="tracks">
+				<section id="tracks">
 					<Tracks />
-				</section>  */}
+				</section>
+
+				<section id="speakers">
+					<Speakers />
+				</section>
+
+				<section id="faq">
+					<FAQ />
+				</section>
+
+				<section id="team">
+					<Team />
+				</section>
+
+				<section id="sponsors">
+					<Sponsors />
+				</section>
 			</div>
 		</ThemeProvider>
 	);

@@ -9,30 +9,39 @@ const useStyles = makeStyles((theme) => ({
 	},
 
 	satellite1: {
-		marginTop: "20%",
+		height: "20vh",
+		width: "20vw",
 		position: "absolute",
 	},
 
 	satellite2: {
-		marginTop: "15%",
-		marginLeft: "75%",
+		height: "15vh",
+		width: "15vw",
+		top: "115vh",
+		left: "80vw",
 		position: "absolute",
 	},
 
 	cloud1: {
-		marginTop: "30%",
+		height: "25vh",
+		width: "25vw",
+		top: "140vh",
 		position: "absolute",
 	},
 
 	cloud2: {
-		marginLeft: "75%",
-		marginTop: "10%",
+		height: "25vh",
+		width: "25vw",
+		top: "115vh",
+		left: "74vw",
 		position: "absolute",
 	},
 
 	cloud3: {
-		marginLeft: "82.5%",
-		marginTop: "35%",
+		height: "25vh",
+		width: "25vw",
+		top: "160vh",
+		left: "74vw",
 		position: "absolute",
 	},
 }));
@@ -40,8 +49,15 @@ const useStyles = makeStyles((theme) => ({
 export default function AboutUs() {
 	const classes = useStyles();
 	return (
-		<div>
-			{/* <img
+		<div
+			style={{
+				display: "flex",
+				alignItems: "center",
+				marginTop: "20vh",
+				height: "60vh",
+			}}
+		>
+			<img
 				src={require("../../images/AboutUsSvgs/Satellite1.svg")}
 				alt="Satellite"
 				className={classes.satellite1}
@@ -67,10 +83,9 @@ export default function AboutUs() {
 				src={require("../../images/CloudSvgs/Cloud3.svg")}
 				alt="Cloud"
 				className={classes.cloud3}
-			/> */}
-			<Grid container className={classes.root}>
+			/>
+			<Grid container>
 				<Grid item xs={2} sm={4} />
-
 				<Grid
 					item
 					container

@@ -11,8 +11,9 @@ const useStyles = makeStyles((theme) => ({
 	},
 
 	cardLogo: {
-		height: "25%",
-		width: "25%",
+		padding: 0,
+		height: "6vh",
+		width: "6vw",
 	},
 }));
 

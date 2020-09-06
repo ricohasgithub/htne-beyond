@@ -17,6 +17,10 @@ const useStyles = makeStyles((theme) => ({
 		zIndex: -1,
 		left: 0,
 		width: "100%",
+
+		[theme.breakpoints.down("md")]: {
+			display: "none",
+		},
 	},
 
 	tracksTitle: {
@@ -30,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Tracks() {
 	const classes = useStyles();
+
 	return (
 		<div className={classes.root}>
 			<img
@@ -44,10 +49,18 @@ export default function Tracks() {
 				</Box>
 			</Typography>
 
-			<Grid container className={classes.cardGrid}>
+			<Grid container className={classes.cardGrid} spacing={0}>
 				<Grid item sm={2} />
-				<Grid item container xs={12} sm={8} spacing={4}>
-					<Grid item xs={4}>
+				<Grid
+					item
+					container
+					xs={12}
+					sm={8}
+					spacing={4}
+					justify="space-around"
+					style={{ margin: 0 }}
+				>
+					<Grid item lg={4} md={12}>
 						<TrackCard
 							trackName={"Track 1"}
 							trackSummary={
@@ -55,7 +68,7 @@ export default function Tracks() {
 							}
 						/>
 					</Grid>
-					<Grid item xs={4}>
+					<Grid item lg={4} md={12}>
 						<TrackCard
 							trackName={"Track 2"}
 							trackSummary={
@@ -63,7 +76,7 @@ export default function Tracks() {
 							}
 						/>
 					</Grid>
-					<Grid item xs={4}>
+					<Grid item lg={4} md={12}>
 						<TrackCard
 							trackName={"Track 3"}
 							trackSummary={
@@ -72,7 +85,7 @@ export default function Tracks() {
 						/>
 					</Grid>
 				</Grid>
-				<Grid sm={2} />
+				<Grid item sm={2} />
 			</Grid>
 			{/* <Typography variant="h3">Tracks</Typography>
 			<Grid container justify="space-around">
