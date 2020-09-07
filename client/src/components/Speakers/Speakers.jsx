@@ -58,15 +58,7 @@ const styles = (theme) => ({
 		top: "275vh",
 
 		[theme.breakpoints.down("md")]: {
-			top: "325vh",
-		},
-
-		[theme.breakpoints.down("sm")]: {
-			top: "300vh",
-		},
-
-		[theme.breakpoints.down("xs")]: {
-			top: "350vh",
+			display: "none",
 		},
 	},
 
@@ -78,16 +70,7 @@ const styles = (theme) => ({
 		top: "350vh",
 
 		[theme.breakpoints.down("md")]: {
-			top: "385vh",
-		},
-
-		[theme.breakpoints.down("sm")]: {
-			top: "400vh",
-		},
-
-		[theme.breakpoints.down("xs")]: {
-			height: "15vh",
-			width: "15vw",
+			display: "none",
 		},
 	},
 
@@ -97,6 +80,10 @@ const styles = (theme) => ({
 		left: "0vw",
 		top: "300vh",
 		position: "absolute",
+
+		[theme.breakpoints.down("md")]: {
+			display: "none",
+		},
 	},
 
 	cloud2: {
@@ -105,6 +92,10 @@ const styles = (theme) => ({
 		left: "45vw",
 		top: "280vh",
 		position: "absolute",
+
+		[theme.breakpoints.down("md")]: {
+			display: "none",
+		},
 	},
 
 	cloud3: {
@@ -113,6 +104,10 @@ const styles = (theme) => ({
 		left: "65vw",
 		top: "320vh",
 		position: "absolute",
+
+		[theme.breakpoints.down("md")]: {
+			display: "none",
+		},
 	},
 
 	cloud4: {
@@ -121,6 +116,10 @@ const styles = (theme) => ({
 		left: "60vw",
 		top: "370vh",
 		position: "absolute",
+
+		[theme.breakpoints.down("md")]: {
+			display: "none",
+		},
 	},
 
 	cloud5: {
@@ -129,6 +128,10 @@ const styles = (theme) => ({
 		left: "10vw",
 		top: "340vh",
 		position: "absolute",
+
+		[theme.breakpoints.down("md")]: {
+			display: "none",
+		},
 	},
 });
 
@@ -192,7 +195,12 @@ class Speakers extends Component {
 
 		let tl = gsap.timeline();
 
-		tl.from(this.cardContainer.current, { opacity: 0, duration: 0.5 });
+		tl.fromTo(
+			this.cardContainer.current,
+			0.5,
+			{ autoAlpha: 0 },
+			{ autoAlpha: 1 }
+		);
 		tl.play();
 
 		this.forceUpdate();

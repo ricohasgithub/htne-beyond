@@ -9,7 +9,9 @@ import TrackCard from "./TrackCard";
 const useStyles = makeStyles((theme) => ({
 	root: {
 		marginTop: "5vh",
-		marginBottom: "35vh",
+		[theme.breakpoints.up("sm")]: {
+			marginBottom: "35vh",
+		},
 	},
 
 	trackBackgroundSvgs: {

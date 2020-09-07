@@ -14,6 +14,7 @@ import Speakers from "./components/Speakers/Speakers";
 import FAQ from "./components/FAQ/FAQ";
 import Team from "./components/Team/Team";
 import Sponsors from "./components/Sponsors/Sponsors";
+import Footer from "./components/Footer/Footer";
 
 let theme = createMuiTheme({
 	palette: {
@@ -61,10 +62,12 @@ function App() {
 				<section id="team">
 					<Team />
 				</section>
-
+				{/* 
 				<section id="sponsors">
 					<Sponsors />
-				</section>
+				</section> */}
+
+				<Footer />
 			</div>
 		</ThemeProvider>
 	);

@@ -9,7 +9,6 @@ export default function Team() {
 	return (
 		<div
 			style={{
-				marginTop: "20vh",
 				height: "60vh",
 			}}
 		>
