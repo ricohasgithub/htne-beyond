@@ -3,57 +3,27 @@ import React from "react";
 import { Typography, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
+import gsap from "gsap";
+
 const useStyles = makeStyles((theme) => ({
 	root: {
 		height: "100vh",
-	},
-
-	backgroundImg: {
-		position: "absolute",
-		width: "100%",
+		backgroundColor: "#00132C",
+		opacity: 0.8,
 		zIndex: -1,
+		overflow: "hidden",
 	},
 
-	sponsorsHeader: {
-		paddingTop: "50vh",
-	},
-
-	helicopter1: {
-		height: "10vw",
+	leftSponsorContainer: {
 		width: "10vw",
-		position: "absolute",
-		top: "640vh",
-		left: "20vw",
-		minWidth: "120px",
-		minHeight: "120px",
+		display: "flex",
+		justifyContent: "space-around",
+		marginBottom: "8vh",
 	},
 
-	helicopter2: {
-		height: "10vw",
-		width: "10vw",
-		position: "absolute",
-		top: "600vh",
-		left: "60vw",
-		minWidth: "120px",
-		minHeight: "120px",
-	},
-
-	plane1: {
-		height: "10vw",
-		width: "10vw",
-		position: "absolute",
-		top: "600vh",
-		left: "10vw",
-		minWidth: "120px",
-		minHeight: "120px",
-	},
-
-	plane2: {
-		height: "10vw",
-		width: "10vw",
-		position: "absolute",
-		top: "640vh",
-		left: "70vw",
+	sponsorSvg: {
+		height: "12vh",
+		width: "12vw",
 		minWidth: "120px",
 		minHeight: "120px",
 	},
@@ -61,38 +31,25 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Sponsors() {
 	const classes = useStyles();
+
+	const logo1 = React.useRef(null);
+	const logo2 = React.useRef(null);
+	const logo3 = React.useRef(null);
+
+	const animatePlanes = () => {
+		let tl = gsap.timeline({ repeat: -1 });
+
+		tl.to(logo1.current, { x: "110vw", duration: "8" });
+		tl.to(logo2.current, { x: "110vw", duration: "7.5" }, "-=8");
+		tl.to(logo3.current, { x: "110vw", duration: "12" }, "-=8");
+
+		tl.play();
+	};
+
+	React.useEffect(() => animatePlanes(), []);
+
 	return (
 		<div className={classes.root}>
-			<img
-				src={require("../../images/SponsorsSvgs/SponsorsBackground.svg")}
-				alt="Sponsors Background"
-				className={classes.backgroundImg}
-			/>
-
-			<img
-				src={require("../../images/SponsorsSvgs/Helicopter1.svg")}
-				alt="Helicopter 1"
-				className={classes.helicopter1}
-			/>
-
-			<img
-				src={require("../../images/SponsorsSvgs/Helicopter2.svg")}
-				alt="Helicopter 2"
-				className={classes.helicopter2}
-			/>
-
-			<img
-				src={require("../../images/SponsorsSvgs/Plane1.svg")}
-				alt="Plane 1"
-				className={classes.plane1}
-			/>
-
-			<img
-				src={require("../../images/SponsorsSvgs/Plane2.svg")}
-				alt="Plane 2"
-				className={classes.plane2}
-			/>
-
 			<Typography
 				variant="h3"
 				align="center"
@@ -102,6 +59,45 @@ export default function Sponsors() {
 					Sponsors
 				</Box>
 			</Typography>
+
+			<div className={classes.leftSponsorContainer} ref={logo1}>
+				<img
+					src={require("../../images/SponsorsSvgs/SponsorLogos/Github.svg")}
+					alt="Github"
+					className={`${classes.sponsorSvg} ${classes.github}`}
+				/>
+				<img
+					src={require("../../images/SponsorsSvgs/Plane1.svg")}
+					alt="Plane 1"
+					className={`${classes.sponsorSvg} ${classes.plane}`}
+				/>
+			</div>
+
+			<div className={classes.leftSponsorContainer} ref={logo2}>
+				<img
+					src={require("../../images/SponsorsSvgs/SponsorLogos/Github.svg")}
+					alt="Github"
+					className={`${classes.sponsorSvg} ${classes.github}`}
+				/>
+				<img
+					src={require("../../images/SponsorsSvgs/Plane2.svg")}
+					alt="Plane 1"
+					className={`${classes.sponsorSvg} ${classes.plane}`}
+				/>
+			</div>
+
+			<div className={classes.leftSponsorContainer} ref={logo3}>
+				<img
+					src={require("../../images/SponsorsSvgs/SponsorLogos/Github.svg")}
+					alt="Github"
+					className={`${classes.sponsorSvg} ${classes.github}`}
+				/>
+				<img
+					src={require("../../images/SponsorsSvgs/Helicopter1.svg")}
+					alt="Plane 1"
+					className={`${classes.sponsorSvg} ${classes.plane}`}
+				/>
+			</div>
 		</div>
 	);
 }

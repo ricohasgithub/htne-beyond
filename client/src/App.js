@@ -62,10 +62,10 @@ function App() {
 				<section id="team">
 					<Team />
 				</section>
-				{/* 
+
 				<section id="sponsors">
 					<Sponsors />
-				</section> */}
+				</section>
 
 				<Footer />
 			</div>
