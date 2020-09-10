@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
 		marginLeft: "1vw",
 		marginRight: "1vw",
 		color: theme.palette.primary.contrastText,
+		textDecoration: "none",
 	},
 
 	menuIcon: {
@@ -55,27 +56,27 @@ const DesktopHeader = () => {
 						/>
 					</div>
 
-					<AnchorLink className={classes.headerLink}>
+					<AnchorLink className={classes.headerLink} href="#aboutus">
 						<Typography>About</Typography>
 					</AnchorLink>
 
-					<AnchorLink className={classes.headerLink}>
+					<AnchorLink className={classes.headerLink} href="#tracks">
 						<Typography>Tracks</Typography>
 					</AnchorLink>
 
-					<AnchorLink className={classes.headerLink}>
+					<AnchorLink className={classes.headerLink} href="#speakers">
 						<Typography>Speakers</Typography>
 					</AnchorLink>
 
-					<AnchorLink className={classes.headerLink}>
+					<AnchorLink className={classes.headerLink} href="#faq">
 						<Typography>FAQ</Typography>
 					</AnchorLink>
 
-					<AnchorLink className={classes.headerLink}>
+					<AnchorLink className={classes.headerLink} href="#team">
 						<Typography>Team</Typography>
 					</AnchorLink>
 
-					<AnchorLink className={classes.headerLink}>
+					<AnchorLink className={classes.headerLink} href="#sponsors">
 						<Typography>Sponsors</Typography>
 					</AnchorLink>
 				</Toolbar>

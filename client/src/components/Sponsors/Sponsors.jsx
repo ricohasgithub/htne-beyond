@@ -39,9 +39,9 @@ export default function Sponsors() {
 	const animatePlanes = () => {
 		let tl = gsap.timeline({ repeat: -1 });
 
-		tl.to(logo1.current, { x: "110vw", duration: "8" });
-		tl.to(logo2.current, { x: "110vw", duration: "7.5" }, "-=8");
-		tl.to(logo3.current, { x: "110vw", duration: "12" }, "-=8");
+		tl.to(logo1.current, { x: "150vw", duration: "8" });
+		tl.to(logo2.current, { x: "150vw", duration: "7.5" }, "-=8");
+		tl.to(logo3.current, { x: "150vw", duration: "12" }, "-=8");
 
 		tl.play();
 	};

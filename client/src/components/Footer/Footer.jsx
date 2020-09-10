@@ -1,7 +1,7 @@
 import React from "react";
 
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { Typography, Box, Grid, useMediaQuery } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import { Typography, Box, Grid } from "@material-ui/core";
 
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
@@ -31,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Footer() {
-	const theme = useTheme();
 	const classes = useStyles();
 
 	return (
@@ -84,13 +83,13 @@ export default function Footer() {
 						</Box>
 					</Typography>
 
-					<a>
+					<a href="https://www.instagram.com/hackthene/">
 						<Typography variant="body1">Instagram</Typography>
 					</a>
-					<a>
+					<a href="/">
 						<Typography variant="body1">LinkedIn</Typography>
 					</a>
-					<a>
+					<a href="/">
 						<Typography variant="body1">Devpost</Typography>
 					</a>
 				</Grid>
