@@ -3,14 +3,21 @@ import React from "react";
 import { Grid, Typography, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
+import gsap from "gsap";
+
 const useStyles = makeStyles((theme) => ({
 	root: {
 		height: "80vh",
 	},
 
+	aboutUsSvg: {
+		zIndex: -1,
+	},
+
 	satellite1: {
 		height: "20vh",
 		width: "20vw",
+		left: "0vw",
 		position: "absolute",
 	},
 
@@ -26,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
 		height: "25vh",
 		width: "25vw",
 		top: "140vh",
+		left: "0vw",
 		position: "absolute",
 	},
 
@@ -48,6 +56,48 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AboutUs() {
 	const classes = useStyles();
+
+	const satellite1 = React.useRef(null);
+	const satellite2 = React.useRef(null);
+
+	const transformSatellite = (satellite) => {
+		let tl = gsap.timeline({ repeat: -1, repeatDelay: 0 });
+
+		tl.to(satellite, {
+			rotation: 80,
+			transformOrigin: "55vh 10vw",
+			duration: 20,
+			ease: "power2.out",
+		});
+
+		tl.to(satellite, {
+			rotation: -80,
+			transformOrigin: "55vh 10vw",
+			duration: 20,
+			ease: "power2.inOut",
+		});
+
+		tl.to(satellite, {
+			rotation: 0,
+			transformOrigin: "55vh 10vw",
+			duration: 20,
+			ease: "power2.inOut",
+		});
+
+		return tl;
+	};
+
+	const masterAnim = () => {
+		let master = gsap.timeline();
+
+		master.add(transformSatellite(satellite1.current), 0);
+		master.add(transformSatellite(satellite2.current), 0);
+
+		master.play();
+	};
+
+	React.useEffect(() => masterAnim());
+
 	return (
 		<div
 			style={{
@@ -57,33 +107,6 @@ export default function AboutUs() {
 				height: "60vh",
 			}}
 		>
-			<img
-				src={require("../../images/AboutUsSvgs/Satellite1.svg")}
-				alt="Satellite"
-				className={classes.satellite1}
-			/>
-
-			<img
-				src={require("../../images/AboutUsSvgs/Satellite2.svg")}
-				alt="Satellite"
-				className={classes.satellite2}
-			/>
-
-			<img
-				src={require("../../images/CloudSvgs/Cloud1.svg")}
-				alt="Cloud"
-				className={classes.cloud1}
-			/>
-			<img
-				src={require("../../images/CloudSvgs/Cloud2.svg")}
-				alt="Cloud"
-				className={classes.cloud2}
-			/>
-			<img
-				src={require("../../images/CloudSvgs/Cloud3.svg")}
-				alt="Cloud"
-				className={classes.cloud3}
-			/>
 			<Grid container>
 				<Grid item xs={2} sm={4} />
 				<Grid
@@ -96,6 +119,35 @@ export default function AboutUs() {
 					sm={4}
 				>
 					<div>
+						<img
+							src={require("../../images/AboutUsSvgs/Satellite1.svg")}
+							alt="Satellite"
+							className={`${classes.aboutUsSvg} ${classes.satellite1}`}
+							ref={satellite1}
+						/>
+
+						<img
+							src={require("../../images/AboutUsSvgs/Satellite2.svg")}
+							alt="Satellite"
+							className={`${classes.aboutUsSvg} ${classes.satellite2}`}
+							ref={satellite2}
+						/>
+
+						<img
+							src={require("../../images/CloudSvgs/Cloud1.svg")}
+							alt="Cloud"
+							className={`${classes.aboutUsSvg} ${classes.cloud1}`}
+						/>
+						<img
+							src={require("../../images/CloudSvgs/Cloud2.svg")}
+							alt="Cloud"
+							className={`${classes.aboutUsSvg} ${classes.cloud2}`}
+						/>
+						<img
+							src={require("../../images/CloudSvgs/Cloud3.svg")}
+							alt="Cloud"
+							className={`${classes.aboutUsSvg} ${classes.cloud3}`}
+						/>
 						<Typography variant="h3" align="center">
 							<Box fontStyle="bold" m={1}>
 								About Us

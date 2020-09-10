@@ -8,7 +8,6 @@ import TeamMember from "./TeamMember";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		height: "60vh",
 		display: "flex",
 		alignItems: "center",
 		justifyContent: "space-around",
@@ -21,6 +20,10 @@ const useStyles = makeStyles((theme) => ({
 		height: "15vh",
 		zIndex: -1,
 		opacity: 0.6,
+
+		[theme.breakpoints.down("sm")]: {
+			display: "none",
+		},
 	},
 
 	package1: {
