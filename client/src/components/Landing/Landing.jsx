@@ -127,7 +127,7 @@ export default function Landing({ sideMenuClickHandler }) {
 		let tl = gsap.timeline({ repeat: -1, repeatDelay: 0 });
 
 		tl.to(redPlanet.current, {
-			duration: 6,
+			duration: 18,
 			rotate: "360deg",
 			ease: "none",
 		});
@@ -135,21 +135,21 @@ export default function Landing({ sideMenuClickHandler }) {
 		tl.to(
 			greenPlanet.current,
 			{
-				duration: 6,
+				duration: 18,
 				rotate: "360deg",
 				ease: "none",
 			},
-			"-=6"
+			0
 		);
 
 		tl.to(
 			yellowPlanet.current,
 			{
-				duration: 6,
+				duration: 18,
 				rotate: "360deg",
 				ease: "none",
 			},
-			"-=6"
+			0
 		);
 
 		return tl;
@@ -276,8 +276,8 @@ export default function Landing({ sideMenuClickHandler }) {
 				<Grid
 					item
 					container
-					sm={6}
-					xs={12}
+					md={6}
+					sm={12}
 					direction="column"
 					alignItems="center"
 				>

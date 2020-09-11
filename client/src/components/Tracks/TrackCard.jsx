@@ -8,6 +8,17 @@ const useStyles = makeStyles((theme) => ({
 		backgroundColor: theme.palette.primary.main,
 		color: theme.palette.primary.contrastText,
 		borderRadius: "5%",
+		transition: "transform 0.3s ease-out",
+
+		"&:hover": {
+			transform: "scale(1.25)",
+			cursor: "pointer",
+		},
+	},
+
+	scale: {
+		transform: "scale(1.5, 1.5)",
+		transition: "transform 0.5s ease",
 	},
 
 	cardLogo: {
@@ -19,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TrackCard({ trackName, trackSummary }) {
 	const classes = useStyles();
+
 	return (
 		<Card className={classes.card}>
 			<CardContent>

@@ -6,28 +6,20 @@ import { Typography, Box, Grid } from "@material-ui/core";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
 const useStyles = makeStyles((theme) => ({
-	root: {
-		[theme.breakpoints.down("md")]: {
-			backgroundColor: "#B42B52",
-		},
-	},
+	root: {},
 
 	backgroundImage: {
 		width: "100%",
 		position: "absolute",
 		marginTop: "10vh",
 		zIndex: -1,
-
-		[theme.breakpoints.down("md")]: {
-			display: "none",
-		},
 	},
 
-	gridRoot: {
-		[theme.breakpoints.up("lg")]: {
-			paddingTop: "60vh",
-		},
-	},
+	// gridRoot: {
+	// 	[theme.breakpoints.up("lg")]: {
+	// 		paddingTop: "60vh",
+	// 	},
+	// },
 }));
 
 export default function Footer() {

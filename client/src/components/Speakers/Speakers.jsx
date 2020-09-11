@@ -7,6 +7,8 @@ import gsap from "gsap";
 import SpeakerCard from "./SpeakerCard";
 import { Typography, Box } from "@material-ui/core";
 
+// REDO THIS SECTION TO BE MORE LIKE FIGMA OPTION 2, MAKES IT FAR EASIER FOR USER HANDLING
+
 const styles = (theme) => ({
 	root: {
 		display: "flex",
@@ -144,6 +146,8 @@ class Speakers extends Component {
 	constructor(props) {
 		super(props);
 		this.cardContainer = React.createRef(null);
+		this.rocket1 = React.createRef(null);
+		this.rocket2 = React.createRef(null);
 	}
 
 	speakerCards = [
@@ -184,7 +188,7 @@ class Speakers extends Component {
 		/>,
 	];
 
-	moveCards = () => {
+	moveCardsRight = () => {
 		const speakerCardsCopy = [...this.speakerCards];
 
 		this.speakerCards[0] = speakerCardsCopy[speakerCardsCopy.length - 1];
@@ -206,8 +210,48 @@ class Speakers extends Component {
 		this.forceUpdate();
 	};
 
+	moveCardsLeft = () => {
+		const speakerCardsCopy = [...this.speakerCards];
+
+		this.speakerCards[speakerCardsCopy.length - 1] = speakerCardsCopy[0];
+
+		for (let i = 0; i < this.speakerCards.length - 1; i++) {
+			this.speakerCards[i] = speakerCardsCopy[i + 1];
+		}
+
+		let tl = gsap.timeline();
+
+		tl.fromTo(
+			this.cardContainer.current,
+			0.5,
+			{ autoAlpha: 0 },
+			{ autoAlpha: 1 }
+		);
+		tl.play();
+
+		this.forceUpdate();
+	};
+
+	moveRockets = (rocket) => {
+		let tl = gsap.timeline({
+			repeat: -1,
+			repeatDelay: Math.floor(Math.random() * 5),
+		});
+
+		tl.to(rocket, { y: "+=10vh", duration: 10 });
+		tl.to(rocket, { y: "-=10vh", duration: 5 });
+		tl.to(rocket, { y: 0, duration: 5 });
+
+		return tl;
+	};
+
 	componentDidMount() {
-		var intervalId = setInterval(this.moveCards, 10000);
+		var intervalId = setInterval(this.moveCardsRight, 10000);
+
+		let master = gsap.timeline();
+
+		master.add(this.moveRockets(this.rocket1.current), 0);
+		master.add(this.moveRockets(this.rocket2.current), 0);
 
 		this.setState({ intervalId: intervalId });
 	}
@@ -228,11 +272,13 @@ class Speakers extends Component {
 					src={require("../../images/Speakers/SpeakersSvgs/Rocket1.svg")}
 					alt="Rocket 1"
 					className={classes.rocket1}
+					ref={this.rocket1}
 				/>
 				<img
 					src={require("../../images/Speakers/SpeakersSvgs/Rocket2.svg")}
 					alt="Rocket 2"
 					className={classes.rocket2}
+					ref={this.rocket2}
 				/>
 
 				<img
@@ -272,11 +318,17 @@ class Speakers extends Component {
 					</Typography>
 					<div className={classes.cardContainer} ref={this.cardContainer}>
 						<div className={edgeContainerClasses}>{this.speakerCards[0]}</div>
-						<div className={justOutsideMiddleCardContainerClasses}>
+						<div
+							className={justOutsideMiddleCardContainerClasses}
+							onClick={this.moveCardsRight}
+						>
 							{this.speakerCards[1]}
 						</div>
 						<div className={mainContainerClasses}>{this.speakerCards[2]}</div>
-						<div className={justOutsideMiddleCardContainerClasses}>
+						<div
+							className={justOutsideMiddleCardContainerClasses}
+							onClick={this.moveCardsLeft}
+						>
 							{this.speakerCards[3]}
 						</div>
 						<div className={edgeContainerClasses}>{this.speakerCards[4]}</div>
