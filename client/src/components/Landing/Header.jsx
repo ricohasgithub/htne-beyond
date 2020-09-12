@@ -32,6 +32,10 @@ const useStyles = makeStyles((theme) => ({
 		marginRight: "1vw",
 		color: theme.palette.primary.contrastText,
 		textDecoration: "none",
+
+		"&:hover": {
+			color: "#57b9ff",
+		},
 	},
 
 	menuIcon: {

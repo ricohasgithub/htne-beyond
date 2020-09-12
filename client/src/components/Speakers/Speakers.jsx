@@ -19,6 +19,10 @@ const styles = (theme) => ({
 		marginTop: "20vh",
 	},
 
+	arrowPart: {
+		display: "",
+	},
+
 	arrow: {
 		height: "5vw",
 		width: "5vw",
@@ -26,6 +30,10 @@ const styles = (theme) => ({
 
 		"&:hover": {
 			cursor: "pointer",
+		},
+
+		"&:hover $arrowPart": {
+			fill: "#57b9ff",
 		},
 	},
 
@@ -124,6 +132,9 @@ class Speakers extends Component {
 		/>,
 	];
 
+	// className={`${classes.arrow} ${classes.leftArrow}`}
+	// onClick={this.moveCardsRight}
+
 	render() {
 		const { classes } = this.props;
 
@@ -131,12 +142,36 @@ class Speakers extends Component {
 			<div className={classes.root}>
 				<Grid container>
 					<Grid item container xs={1} alignItems="center">
-						<img
-							src={require("../../images/Speakers/SpeakersSvgs/Arrow.svg")}
-							alt="Left Arrow"
+						<svg
+							width="55"
+							height="55"
+							viewBox="0 0 55 55"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
 							className={`${classes.arrow} ${classes.leftArrow}`}
 							onClick={this.moveCardsRight}
-						/>
+						>
+							<rect
+								x="27.7949"
+								y="54.1138"
+								width="38.2535"
+								height="7.53022"
+								rx="3.76511"
+								transform="rotate(-135 27.7949 54.1138)"
+								fill="white"
+								className={classes.arrowPart}
+							/>
+							<rect
+								x="33.1201"
+								y="5.33972"
+								width="38.2535"
+								height="7.53022"
+								rx="3.76511"
+								transform="rotate(135 33.1201 5.33972)"
+								fill="white"
+								className={classes.arrowPart}
+							/>
+						</svg>
 					</Grid>
 					<Grid item container xs={10} direction="column">
 						<Typography variant="h3" align="center">
@@ -150,12 +185,36 @@ class Speakers extends Component {
 					</Grid>
 
 					<Grid item container xs={1} alignItems="center" justify="flex-end">
-						<img
-							src={require("../../images/Speakers/SpeakersSvgs/Arrow.svg")}
-							alt="Right Arrow"
+						<svg
+							width="55"
+							height="55"
+							viewBox="0 0 55 55"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
 							className={`${classes.arrow} ${classes.rightArrow}`}
-							onClick={this.moveCardsLeft}
-						/>
+							onClick={this.moveCardsRight}
+						>
+							<rect
+								x="27.7949"
+								y="54.1138"
+								width="38.2535"
+								height="7.53022"
+								rx="3.76511"
+								transform="rotate(-135 27.7949 54.1138)"
+								fill="white"
+								className={classes.arrowPart}
+							/>
+							<rect
+								x="33.1201"
+								y="5.33972"
+								width="38.2535"
+								height="7.53022"
+								rx="3.76511"
+								transform="rotate(135 33.1201 5.33972)"
+								fill="white"
+								className={classes.arrowPart}
+							/>
+						</svg>
 					</Grid>
 				</Grid>
 			</div>

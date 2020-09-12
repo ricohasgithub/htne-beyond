@@ -13,12 +13,11 @@ const useStyles = makeStyles((theme) => ({
 		"&:hover": {
 			transform: "scale(1.25)",
 			cursor: "pointer",
-		},
-	},
 
-	scale: {
-		transform: "scale(1.5, 1.5)",
-		transition: "transform 0.5s ease",
+			[theme.breakpoints.down("sm")]: {
+				transform: "scale(1)",
+			},
+		},
 	},
 
 	cardLogo: {

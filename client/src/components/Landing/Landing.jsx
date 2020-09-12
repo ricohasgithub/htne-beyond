@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
 		height: "90vh",
 		backgroundColor: theme.palette.primary.main,
 		color: theme.palette.primary.contrastText,
+		overflow: "hidden",
 	},
 
 	rootGrid: {

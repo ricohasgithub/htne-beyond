@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
 		display: "flex",
 		alignItems: "center",
 		justifyContent: "space-around",
+		overflow: "hidden",
 		height: "80vh",
 	},
 

@@ -7,6 +7,7 @@ import QuestionAnswer from "./QuestionAnswer";
 const useStyles = makeStyles((theme) => ({
 	root: {
 		height: "100vh",
+		overflow: "hidden",
 	},
 
 	backgroundImg: {

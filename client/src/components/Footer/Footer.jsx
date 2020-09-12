@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
 		height: "50vh",
 		backgroundImage: `url(${FooterBackground})`,
 		backgroundSize: "cover",
+		overflow: "hidden",
 	},
 
 	gridRoot: {
@@ -26,6 +27,10 @@ const useStyles = makeStyles((theme) => ({
 	footerLink: {
 		textDecoration: "none",
 		color: "#FFFFFF",
+
+		"&:hover": {
+			color: "#57b9ff",
+		},
 	},
 }));
 
@@ -50,7 +55,7 @@ export default function Footer() {
 					</Typography>
 
 					<Typography
-						variant="body1"
+						variant="body2"
 						align="left"
 						style={{ marginLeft: "5.5vw" }}
 					>
@@ -67,20 +72,20 @@ export default function Footer() {
 					direction="column"
 					alignItems="center"
 				>
-					<Typography variant="h5">
+					<Typography variant="h6">
 						<Box fontStyle="bold" m={1}>
 							Navigate
 						</Box>
 					</Typography>
 
 					<AnchorLink href="#aboutus" className={classes.footerLink}>
-						<Typography variant="body1">About Us</Typography>
+						<Typography variant="body2">About Us</Typography>
 					</AnchorLink>
 					<AnchorLink href="#tracks" className={classes.footerLink}>
-						<Typography variant="body1">Tracks</Typography>
+						<Typography variant="body2">Tracks</Typography>
 					</AnchorLink>
 					<AnchorLink href="#speakers" className={classes.footerLink}>
-						<Typography variant="body1">Speakers</Typography>
+						<Typography variant="body2">Speakers</Typography>
 					</AnchorLink>
 				</Grid>
 
@@ -92,7 +97,7 @@ export default function Footer() {
 					direction="column"
 					alignItems="center"
 				>
-					<Typography variant="h5">
+					<Typography variant="h6">
 						<Box fontStyle="bold" m={1}>
 							Contact
 						</Box>
@@ -102,13 +107,13 @@ export default function Footer() {
 						href="https://www.instagram.com/hackthene/"
 						className={classes.footerLink}
 					>
-						<Typography variant="body1">Instagram</Typography>
+						<Typography variant="body2">Instagram</Typography>
 					</a>
 					<a href="/" className={classes.footerLink}>
-						<Typography variant="body1">LinkedIn</Typography>
+						<Typography variant="body2">LinkedIn</Typography>
 					</a>
 					<a href="/" className={classes.footerLink}>
-						<Typography variant="body1">Devpost</Typography>
+						<Typography variant="body2">Devpost</Typography>
 					</a>
 				</Grid>
 			</Grid>

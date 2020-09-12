@@ -7,12 +7,25 @@ import gsap from "gsap";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		height: "80vh",
-		overflowX: "hidden",
+		display: "flex",
+		alignItems: "center",
+		marginTop: "20vh",
+		height: "60vh",
+		overflow: "hidden",
 	},
 
 	aboutUsSvg: {
 		zIndex: -1,
+	},
+
+	satelliteContainer: {
+		width: "100%",
+		height: "100%",
+		position: "absolute",
+
+		[theme.breakpoints.down("sm")]: {
+			display: "none",
+		},
 	},
 
 	satellite1: {
@@ -34,6 +47,15 @@ const useStyles = makeStyles((theme) => ({
 		left: "60vw",
 		position: "relative",
 
+		[theme.breakpoints.down("sm")]: {
+			display: "none",
+		},
+	},
+
+	cloudContainter: {
+		width: "100%",
+		height: "100%",
+		position: "absolute",
 		[theme.breakpoints.down("sm")]: {
 			display: "none",
 		},
@@ -119,14 +141,7 @@ export default function AboutUs() {
 	React.useEffect(() => masterAnim());
 
 	return (
-		<div
-			style={{
-				display: "flex",
-				alignItems: "center",
-				marginTop: "20vh",
-				height: "60vh",
-			}}
-		>
+		<div className={classes.root}>
 			<Grid container>
 				<Grid item xs={2} sm={4} />
 				<Grid
@@ -152,10 +167,7 @@ export default function AboutUs() {
 							nulla in neque dignissim convallis sit amet nec felis.
 						</Typography>
 					</div>
-					<div
-						style={{ width: "100%", height: "100%", position: "absolute" }}
-						ref={satelliteContainer}
-					>
+					<div className={classes.satelliteContainer} ref={satelliteContainer}>
 						<img
 							src={require("../../images/AboutUsSvgs/Satellite1.svg")}
 							alt="Satellite"
@@ -168,7 +180,7 @@ export default function AboutUs() {
 							className={`${classes.aboutUsSvg} ${classes.satellite2}`}
 						/>
 					</div>
-					<div style={{ width: "100%", height: "100%", position: "absolute" }}>
+					<div className={classes.cloudContainter}>
 						<img
 							src={require("../../images/CloudSvgs/Cloud1.svg")}
 							alt="Cloud"
