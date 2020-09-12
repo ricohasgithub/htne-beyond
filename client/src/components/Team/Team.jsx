@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 
 	cloud: {
-		position: "absolute",
+		position: "relative",
 		width: "20vw",
 		height: "20vh",
 		zIndex: -1,
@@ -55,20 +55,24 @@ const useStyles = makeStyles((theme) => ({
 	},
 
 	cloud1: {
-		top: "470vh",
-
+		left: "-20vw",
+		top: "30vh",
 		// [theme.breakpoints.down("md")]: {
 		// 	top: "560vh",
 		// },
 	},
 
 	cloud2: {
-		top: "520vh",
-		left: "20vw",
+		left: "0vw",
+		top: "-20vh",
+	},
 
-		[theme.breakpoints.down("md")]: {
-			top: "580vh",
-		},
+	cloud3: {
+		left: "30vw",
+	},
+
+	cloud4: {
+		top: "-30vh",
 	},
 }));
 
@@ -79,13 +83,43 @@ export default function Team() {
 	const package2 = React.useRef(null);
 	const package3 = React.useRef(null);
 
+	const cloud1 = React.useRef(null);
+	const cloud2 = React.useRef(null);
+	const cloud3 = React.useRef(null);
+	const cloud4 = React.useRef(null);
+
 	const animatePackage = (pack) => {
 		let tl = gsap.timeline({
 			repeat: -1,
 			repeatDelay: Math.floor(Math.random() * 5),
 		});
 
-		tl.to(pack, { y: "+=40vh", autoAlpha: 0, duration: 12, ease: "none" }, 0);
+		tl.to(pack, { y: "+=20vh", autoAlpha: 0, duration: 12, ease: "none" }, 0);
+
+		return tl;
+	};
+
+	const animateCloud = (cloud) => {
+		let tl = gsap.timeline({
+			repeat: -1,
+			repeatDelay: Math.floor(Math.random() * 10),
+		});
+
+		tl.to(cloud, {
+			x: -Math.floor(Math.random() * 22 + 7),
+			duration: Math.floor(Math.random() * 10 + 2),
+			ease: "none",
+		});
+		tl.to(cloud, {
+			x: Math.floor(Math.random() * 22 + 7),
+			duration: Math.floor(Math.random() * 10 + 2),
+			ease: "none",
+		});
+		tl.to(cloud, {
+			x: 0,
+			duration: Math.floor(Math.random() * 10 + 2),
+			ease: "none",
+		});
 
 		return tl;
 	};
@@ -96,6 +130,11 @@ export default function Team() {
 		master.add(animatePackage(package1.current), 0);
 		master.add(animatePackage(package2.current), 0);
 		master.add(animatePackage(package3.current), 0);
+
+		master.add(animateCloud(cloud1.current), 0);
+		master.add(animateCloud(cloud2.current), 0);
+		master.add(animateCloud(cloud3.current), 0);
+		master.add(animateCloud(cloud4.current), 0);
 
 		master.play();
 	};
@@ -125,17 +164,35 @@ export default function Team() {
 				ref={package3}
 			/>
 
-			<img
-				src={require("../../images/Speakers/SpeakersSvgs/Cloud2.svg")}
-				alt="Cloud 1"
-				className={`${classes.cloud} ${classes.cloud1}`}
-			/>
+			<div style={{ position: "absolute" }}>
+				<img
+					src={require("../../images/Speakers/SpeakersSvgs/Cloud2.svg")}
+					alt="Cloud 1"
+					className={`${classes.cloud} ${classes.cloud1}`}
+					ref={cloud1}
+				/>
 
-			<img
-				src={require("../../images/Speakers/SpeakersSvgs/Cloud4.svg")}
-				alt="Cloud 3"
-				className={`${classes.cloud} ${classes.cloud2}`}
-			/>
+				<img
+					src={require("../../images/Speakers/SpeakersSvgs/Cloud4.svg")}
+					alt="Cloud 2"
+					className={`${classes.cloud} ${classes.cloud2}`}
+					ref={cloud2}
+				/>
+
+				<img
+					src={require("../../images/Speakers/SpeakersSvgs/Cloud5.svg")}
+					alt="Cloud 3"
+					className={`${classes.cloud} ${classes.cloud3}`}
+					ref={cloud3}
+				/>
+
+				<img
+					src={require("../../images/Speakers/SpeakersSvgs/Cloud3.svg")}
+					alt="Cloud 4"
+					className={`${classes.cloud} ${classes.cloud4}`}
+					ref={cloud4}
+				/>
+			</div>
 
 			<div>
 				<Typography variant="h3" align="center">
