@@ -7,79 +7,122 @@ import gsap from "gsap";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		height: "80vh",
+		display: "flex",
+		alignItems: "center",
+		marginTop: "20vh",
+		height: "60vh",
+		overflow: "hidden",
 	},
 
 	aboutUsSvg: {
 		zIndex: -1,
 	},
 
+	satelliteContainer: {
+		width: "100%",
+		height: "100%",
+		position: "absolute",
+
+		[theme.breakpoints.down("sm")]: {
+			display: "none",
+		},
+	},
+
 	satellite1: {
 		height: "20vh",
 		width: "20vw",
+		top: "40vh",
 		left: "0vw",
-		position: "absolute",
+		position: "relative",
+
+		[theme.breakpoints.down("sm")]: {
+			display: "none",
+		},
 	},
 
 	satellite2: {
 		height: "15vh",
 		width: "15vw",
-		top: "115vh",
-		left: "80vw",
+		top: "20vh",
+		left: "60vw",
+		position: "relative",
+
+		[theme.breakpoints.down("sm")]: {
+			display: "none",
+		},
+	},
+
+	cloudContainter: {
+		width: "100%",
+		height: "100%",
 		position: "absolute",
+		[theme.breakpoints.down("sm")]: {
+			display: "none",
+		},
 	},
 
 	cloud1: {
 		height: "25vh",
 		width: "25vw",
-		top: "140vh",
+		top: "60vh",
 		left: "0vw",
-		position: "absolute",
+		position: "relative",
+
+		[theme.breakpoints.down("sm")]: {
+			display: "none",
+		},
 	},
 
 	cloud2: {
 		height: "25vh",
 		width: "25vw",
-		top: "115vh",
-		left: "74vw",
-		position: "absolute",
+		top: "15vh",
+		left: "50vw",
+		position: "relative",
+
+		[theme.breakpoints.down("sm")]: {
+			display: "none",
+		},
 	},
 
 	cloud3: {
 		height: "25vh",
 		width: "25vw",
-		top: "160vh",
-		left: "74vw",
-		position: "absolute",
+		top: "55vh",
+		left: "25vw",
+		position: "relative",
+
+		[theme.breakpoints.down("sm")]: {
+			display: "none",
+		},
 	},
 }));
 
 export default function AboutUs() {
 	const classes = useStyles();
 
-	const satellite1 = React.useRef(null);
-	const satellite2 = React.useRef(null);
+	const satelliteContainer = React.useRef(null);
 
-	const transformSatellite = (satellite) => {
-		let tl = gsap.timeline({ repeat: -1, repeatDelay: 0 });
+	const transformSatellite = () => {
+		let tl = gsap.timeline({
+			repeat: -1,
+			repeatDelay: Math.floor(Math.random() * 5),
+		});
 
-		tl.to(satellite, {
-			rotation: 80,
-			transformOrigin: "55vh 10vw",
+		tl.to(satelliteContainer.current, {
+			rotate: 20,
 			duration: 20,
 			ease: "power2.out",
 		});
 
-		tl.to(satellite, {
-			rotation: -80,
-			transformOrigin: "55vh 10vw",
+		tl.to(satelliteContainer.current, {
+			rotate: -20,
 			duration: 20,
 			ease: "power2.inOut",
 		});
 
-		tl.to(satellite, {
-			rotation: 0,
-			transformOrigin: "55vh 10vw",
+		tl.to(satelliteContainer.current, {
+			rotate: 0,
 			duration: 20,
 			ease: "power2.inOut",
 		});
@@ -90,8 +133,7 @@ export default function AboutUs() {
 	const masterAnim = () => {
 		let master = gsap.timeline();
 
-		master.add(transformSatellite(satellite1.current), 0);
-		master.add(transformSatellite(satellite2.current), 0);
+		master.add(transformSatellite(), 0);
 
 		master.play();
 	};
@@ -99,14 +141,7 @@ export default function AboutUs() {
 	React.useEffect(() => masterAnim());
 
 	return (
-		<div
-			style={{
-				display: "flex",
-				alignItems: "center",
-				marginTop: "20vh",
-				height: "60vh",
-			}}
-		>
+		<div className={classes.root}>
 			<Grid container>
 				<Grid item xs={2} sm={4} />
 				<Grid
@@ -119,20 +154,33 @@ export default function AboutUs() {
 					sm={4}
 				>
 					<div>
+						<Typography variant="h3" align="center">
+							<Box fontStyle="bold" m={1}>
+								About Us
+							</Box>
+						</Typography>
+
+						<Typography variant="h6" align="center">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+							vitae orci efficitur, pellentesque massa et, placerat eros. Lorem
+							ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
+							nulla in neque dignissim convallis sit amet nec felis.
+						</Typography>
+					</div>
+					<div className={classes.satelliteContainer} ref={satelliteContainer}>
 						<img
 							src={require("../../images/AboutUsSvgs/Satellite1.svg")}
 							alt="Satellite"
 							className={`${classes.aboutUsSvg} ${classes.satellite1}`}
-							ref={satellite1}
 						/>
 
 						<img
 							src={require("../../images/AboutUsSvgs/Satellite2.svg")}
 							alt="Satellite"
 							className={`${classes.aboutUsSvg} ${classes.satellite2}`}
-							ref={satellite2}
 						/>
-
+					</div>
+					<div className={classes.cloudContainter}>
 						<img
 							src={require("../../images/CloudSvgs/Cloud1.svg")}
 							alt="Cloud"
@@ -148,18 +196,6 @@ export default function AboutUs() {
 							alt="Cloud"
 							className={`${classes.aboutUsSvg} ${classes.cloud3}`}
 						/>
-						<Typography variant="h3" align="center">
-							<Box fontStyle="bold" m={1}>
-								About Us
-							</Box>
-						</Typography>
-
-						<Typography variant="h6" align="center">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-							vitae orci efficitur, pellentesque massa et, placerat eros. Lorem
-							ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
-							nulla in neque dignissim convallis sit amet nec felis.
-						</Typography>
 					</div>
 				</Grid>
 				<Grid item xs={2} sm={4} />

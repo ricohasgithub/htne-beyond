@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
 		[theme.breakpoints.up("sm")]: {
 			marginBottom: "35vh",
 		},
+		overflow: "hidden",
 	},
 
 	trackBackgroundSvgs: {

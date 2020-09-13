@@ -1,13 +1,24 @@
 import React from "react";
 
-import { Typography, Button } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
+	root: {
+		marginTop: "1vh",
+		userSelect: "none",
+
+		"&:hover": {
+			cursor: "pointer",
+			color: "#57b9ff",
+		},
+	},
+
 	answer: {
 		maxHeight: "0",
 		overflow: "hidden",
 		transition: "max-height 0.3s ease",
+		color: "#FFFFFF",
 	},
 
 	open: {
@@ -30,16 +41,15 @@ export default function QuestionAnswer({ question, answer }) {
 	};
 
 	return (
-		<div style={{ marginTop: "1vh" }}>
-			<Button color="inherit" onClick={toggleAnswerClass}>
+		<div className={classes.root} onClick={toggleAnswerClass}>
+			<div style={{ display: "flex" }}>
 				<img
 					src={require("../../images/FAQSvgs/Plus.svg")}
 					style={{ marginRight: "2vw" }}
 					alt="Plus sign"
 				/>
-				<Typography variant="h6">{question}</Typography>
-			</Button>
-
+				<Typography variant="h4">{question}</Typography>
+			</div>
 			<div className={answerClasses}>
 				<Typography variant="body1">{answer}</Typography>
 			</div>

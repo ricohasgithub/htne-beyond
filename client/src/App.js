@@ -66,7 +66,10 @@ function App() {
 	return (
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
-			<div className="App" style={{ width: "100%", height: "100%" }}>
+			<div
+				className="App"
+				style={{ width: "100%", height: "100%", overflowX: "hidden" }}
+			>
 				<Landing sideMenuClickHandler={sideMenuClickHandler} />
 
 				<SideMenu

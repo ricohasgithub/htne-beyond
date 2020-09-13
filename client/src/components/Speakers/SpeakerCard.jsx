@@ -1,53 +1,71 @@
 import React from "react";
-import { Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+
+import { Grid, Typography, useMediaQuery } from "@material-ui/core";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
-	cardRoot: {
-		width: "100%",
-		height: "100%",
-		backgroundColor: "#365680",
-	},
-
-	cardContentContainer: {
-		display: "flex",
-		height: "100%",
-		alignItems: "center",
-	},
-
-	speakerImage: {
-		width: "15%",
-		height: "40%",
+	speakerPhoto: {
+		width: "50%",
+		height: "auto",
 		borderRadius: "100%",
-		margin: "2.5%",
 
 		[theme.breakpoints.down("sm")]: {
-			display: "none",
+			width: "60%",
 		},
-	},
-
-	cardTextContainer: {
-		margin: "2.5%",
 	},
 }));
 
 export default function SpeakerCard({ speakerName, speakerSummary }) {
 	const classes = useStyles();
+	const theme = useTheme();
+	const matches = useMediaQuery(theme.breakpoints.down("sm"));
+	let direction = "row";
+	let nameAlignment = "left";
+
+	if (matches) {
+		direction = "column";
+		nameAlignment = "center";
+	} else {
+		direction = "row";
+		nameAlignment = "left";
+	}
 
 	return (
-		<div className={classes.cardRoot}>
-			<div className={classes.cardContentContainer}>
-				<img
-					src={require("../../images/Speakers/placeholder.png")}
-					alt={speakerName}
-					className={classes.speakerImage}
-				/>
-
-				<div className={classes.cardTextContainer}>
-					<Typography variant="h4">{speakerName}</Typography>
-					<Typography variant="body2">{speakerSummary}</Typography>
-				</div>
-			</div>
+		<div>
+			<Grid container direction="row" spacing={0} style={{ height: "100%" }}>
+				<Grid
+					container
+					item
+					xs={12}
+					direction={direction}
+					justify="space-around"
+					alignItems="center"
+				>
+					<Grid
+						item
+						container
+						xs={6}
+						justify="space-around"
+						alignItems="center"
+					>
+						<img
+							src={require("../../images/Speakers/placeholder.png")}
+							alt={speakerName}
+							className={classes.speakerPhoto}
+						/>
+					</Grid>
+					<Grid item container xs={6} direction="column" justify="space-around">
+						<div>
+							<Typography variant="h4" align={nameAlignment}>
+								{speakerName}
+							</Typography>
+							<Typography variant="body1" align={nameAlignment}>
+								{speakerSummary}
+							</Typography>
+						</div>
+					</Grid>
+				</Grid>
+			</Grid>
 		</div>
 	);
 }
