@@ -56,27 +56,27 @@ export default function SideMenu({ sideMenuClickHandler, show }) {
 			</div>
 
 			<div className={classes.sideMenuLinksContainer}>
-				<AnchorLink className={classes.headerLink}>
+				<AnchorLink className={classes.headerLink} href="#aboutus">
 					<Typography>About</Typography>
 				</AnchorLink>
 
-				<AnchorLink className={classes.headerLink}>
+				<AnchorLink className={classes.headerLink} href="#tracks">
 					<Typography>Tracks</Typography>
 				</AnchorLink>
 
-				<AnchorLink className={classes.headerLink}>
+				<AnchorLink className={classes.headerLink} href="#speakers">
 					<Typography>Speakers</Typography>
 				</AnchorLink>
 
-				<AnchorLink className={classes.headerLink}>
+				<AnchorLink className={classes.headerLink} href="#faq">
 					<Typography>FAQ</Typography>
 				</AnchorLink>
 
-				<AnchorLink className={classes.headerLink}>
+				<AnchorLink className={classes.headerLink} href="#team">
 					<Typography>Team</Typography>
 				</AnchorLink>
 
-				<AnchorLink className={classes.headerLink}>
+				<AnchorLink className={classes.headerLink} href="#sponsors">
 					<Typography>Sponsors</Typography>
 				</AnchorLink>
 			</div>

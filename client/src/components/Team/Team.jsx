@@ -203,22 +203,22 @@ export default function Team() {
 				</Typography>
 
 				<Grid container>
-					<Grid item container xs={4} justify="center">
+					<Grid item container sm={4} xs={6} justify="center">
 						<TeamMember name={"First Last"} position={"Position"} />
 					</Grid>
-					<Grid item container xs={4} justify="center">
+					<Grid item container sm={4} xs={6} justify="center">
 						<TeamMember name={"First Last"} position={"Position"} />
 					</Grid>
-					<Grid item container xs={4} justify="center">
+					<Grid item container sm={4} xs={6} justify="center">
 						<TeamMember name={"First Last"} position={"Position"} />
 					</Grid>
-					<Grid item container xs={4} justify="center">
+					<Grid item container sm={4} xs={6} justify="center">
 						<TeamMember name={"First Last"} position={"Position"} />
 					</Grid>
-					<Grid item container xs={4} justify="center">
+					<Grid item container sm={4} xs={6} justify="center">
 						<TeamMember name={"First Last"} position={"Position"} />
 					</Grid>
-					<Grid item container xs={4} justify="center">
+					<Grid item container sm={4} xs={6} justify="center">
 						<TeamMember name={"First Last"} position={"Position"} />
 					</Grid>
 				</Grid>

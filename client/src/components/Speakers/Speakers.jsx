@@ -24,7 +24,7 @@ const styles = (theme) => ({
 	},
 
 	arrow: {
-		height: "5vw",
+		height: "5vh",
 		width: "5vw",
 		userSelect: "none",
 
@@ -49,6 +49,16 @@ class Speakers extends Component {
 	}
 
 	moveCardsRight = () => {
+		let tl = gsap.timeline();
+
+		tl.to(this.cardContainer.current, {
+			autoAlpha: 0,
+			x: -1500,
+			duration: 1,
+		});
+
+		tl.to(this.cardContainer.current, { x: 1500, duration: 0 });
+
 		const speakerCardsCopy = [...this.speakerCards];
 
 		this.speakerCards[0] = speakerCardsCopy[speakerCardsCopy.length - 1];
@@ -57,11 +67,9 @@ class Speakers extends Component {
 			this.speakerCards[i] = speakerCardsCopy[i - 1];
 		}
 
-		let tl = gsap.timeline();
-
-		tl.from(this.cardContainer.current, {
-			autoAlpha: 0,
-			x: 1000,
+		tl.to(this.cardContainer.current, {
+			autoAlpha: 1,
+			x: 0,
 			duration: 1,
 		});
 
@@ -73,13 +81,13 @@ class Speakers extends Component {
 	moveCardsLeft = () => {
 		let tl = gsap.timeline();
 
-		tl.from(this.cardContainer.current, {
+		tl.to(this.cardContainer.current, {
 			autoAlpha: 0,
-			x: -1000,
+			x: 1500,
 			duration: 1,
 		});
 
-		tl.to(this.cardContainer.current, { x: 0, autoAlpha: 1, duration: 0 });
+		tl.to(this.cardContainer.current, { x: -1500, duration: 0 });
 
 		const speakerCardsCopy = [...this.speakerCards];
 
@@ -88,6 +96,12 @@ class Speakers extends Component {
 		for (let i = 0; i < this.speakerCards.length - 1; i++) {
 			this.speakerCards[i] = speakerCardsCopy[i + 1];
 		}
+
+		tl.to(this.cardContainer.current, {
+			autoAlpha: 1,
+			x: 0,
+			duration: 1,
+		});
 
 		tl.play();
 
@@ -141,7 +155,7 @@ class Speakers extends Component {
 		return (
 			<div className={classes.root}>
 				<Grid container>
-					<Grid item container xs={1} alignItems="center">
+					<Grid item container xs={2} alignItems="center">
 						<svg
 							width="55"
 							height="55"
@@ -173,7 +187,7 @@ class Speakers extends Component {
 							/>
 						</svg>
 					</Grid>
-					<Grid item container xs={10} direction="column">
+					<Grid item container xs={8} direction="column">
 						<Typography variant="h3" align="center">
 							<Box fontStyle="bold" m={1}>
 								Speakers
@@ -184,7 +198,7 @@ class Speakers extends Component {
 						</div>
 					</Grid>
 
-					<Grid item container xs={1} alignItems="center" justify="flex-end">
+					<Grid item container xs={2} alignItems="center" justify="flex-end">
 						<svg
 							width="55"
 							height="55"
@@ -192,7 +206,7 @@ class Speakers extends Component {
 							fill="none"
 							xmlns="http://www.w3.org/2000/svg"
 							className={`${classes.arrow} ${classes.rightArrow}`}
-							onClick={this.moveCardsRight}
+							onClick={this.moveCardsLeft}
 						>
 							<rect
 								x="27.7949"
