@@ -1,150 +1,112 @@
 import React, { Component } from "react";
 
+import { Grid, Typography, Box } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 
-import gsap from "gsap";
 // Custom Components
 import SpeakerCard from "./SpeakerCard";
-import { Typography, Box } from "@material-ui/core";
+
+import gsap from "gsap";
 
 const styles = (theme) => ({
 	root: {
 		display: "flex",
 		flexDirection: "column",
-		overflowX: "hidden",
-		overflowY: "hidden",
-		alignItems: "center",
+		height: "80vh",
+		minHeight: "600px",
 		justifyContent: "space-around",
-		height: "100vh",
-	},
-
-	cardContainer: {
 		overflowX: "hidden",
-		overflowY: "hidden",
-		display: "flex",
-		opacity: 1,
+		marginTop: "20vh",
+	},
 
-		[theme.breakpoints.down("sm")]: {
-			flexDirection: "column",
-			justifyContent: "space-around",
-			alignItems: "center",
+	arrowPart: {
+		display: "",
+	},
+
+	arrow: {
+		height: "5vh",
+		width: "5vw",
+		userSelect: "none",
+
+		"&:hover": {
+			cursor: "pointer",
+		},
+
+		"&:hover $arrowPart": {
+			fill: "#57b9ff",
 		},
 	},
 
-	individualCardContainer: {
-		width: "40vw",
-		height: "25vh",
-		paddingLeft: "1vw",
-		paddingRight: "1vw",
-		transition: "transform 0.3s ease",
-		[theme.breakpoints.down("sm")]: {
-			width: "80vw",
-		},
-	},
-
-	justOutsideMiddleCardContainer: {
-		transform: "scale(0.75, 0.75)",
-	},
-
-	edgeCardContainers: {
-		display: "none",
-	},
-
-	rocket1: {
-		height: "35vh",
-		width: "35vw",
-		position: "absolute",
-		left: "60vw",
-		top: "275vh",
-
-		[theme.breakpoints.down("md")]: {
-			display: "none",
-		},
-	},
-
-	rocket2: {
-		height: "25vh",
-		width: "25vw",
-		position: "absolute",
-		left: "0vw",
-		top: "350vh",
-
-		[theme.breakpoints.down("md")]: {
-			display: "none",
-		},
-	},
-
-	cloud1: {
-		height: "25vh",
-		width: "25vw",
-		left: "0vw",
-		top: "300vh",
-		position: "absolute",
-
-		[theme.breakpoints.down("md")]: {
-			display: "none",
-		},
-	},
-
-	cloud2: {
-		height: "25vh",
-		width: "25vw",
-		left: "45vw",
-		top: "280vh",
-		position: "absolute",
-
-		[theme.breakpoints.down("md")]: {
-			display: "none",
-		},
-	},
-
-	cloud3: {
-		height: "25vh",
-		width: "25vw",
-		left: "65vw",
-		top: "320vh",
-		position: "absolute",
-
-		[theme.breakpoints.down("md")]: {
-			display: "none",
-		},
-	},
-
-	cloud4: {
-		height: "25vh",
-		width: "25vw",
-		left: "60vw",
-		top: "370vh",
-		position: "absolute",
-
-		[theme.breakpoints.down("md")]: {
-			display: "none",
-		},
-	},
-
-	cloud5: {
-		height: "25vh",
-		width: "25vw",
-		left: "10vw",
-		top: "340vh",
-		position: "absolute",
-
-		[theme.breakpoints.down("md")]: {
-			display: "none",
-		},
+	rightArrow: {
+		transform: "rotate(180deg)",
 	},
 });
 
 class Speakers extends Component {
-	state = {
-		intervalId: null,
-		inTransition: false,
-	};
-
 	constructor(props) {
 		super(props);
 		this.cardContainer = React.createRef(null);
 	}
+
+	moveCardsRight = () => {
+		let tl = gsap.timeline();
+
+		tl.to(this.cardContainer.current, {
+			autoAlpha: 0,
+			x: -1500,
+			duration: 1,
+		});
+
+		tl.to(this.cardContainer.current, { x: 1500, duration: 0 });
+
+		const speakerCardsCopy = [...this.speakerCards];
+
+		this.speakerCards[0] = speakerCardsCopy[speakerCardsCopy.length - 1];
+
+		for (let i = 1; i < this.speakerCards.length; i++) {
+			this.speakerCards[i] = speakerCardsCopy[i - 1];
+		}
+
+		tl.to(this.cardContainer.current, {
+			autoAlpha: 1,
+			x: 0,
+			duration: 1,
+		});
+
+		tl.to(this.cardContainer.current, { x: 0, autoAlpha: 1, duration: 0 });
+
+		this.forceUpdate();
+	};
+
+	moveCardsLeft = () => {
+		let tl = gsap.timeline();
+
+		tl.to(this.cardContainer.current, {
+			autoAlpha: 0,
+			x: 1500,
+			duration: 1,
+		});
+
+		tl.to(this.cardContainer.current, { x: -1500, duration: 0 });
+
+		const speakerCardsCopy = [...this.speakerCards];
+
+		this.speakerCards[speakerCardsCopy.length - 1] = speakerCardsCopy[0];
+
+		for (let i = 0; i < this.speakerCards.length - 1; i++) {
+			this.speakerCards[i] = speakerCardsCopy[i + 1];
+		}
+
+		tl.to(this.cardContainer.current, {
+			autoAlpha: 1,
+			x: 0,
+			duration: 1,
+		});
+
+		tl.play();
+
+		this.forceUpdate();
+	};
 
 	speakerCards = [
 		<SpeakerCard
@@ -184,104 +146,91 @@ class Speakers extends Component {
 		/>,
 	];
 
-	moveCards = () => {
-		const speakerCardsCopy = [...this.speakerCards];
-
-		this.speakerCards[0] = speakerCardsCopy[speakerCardsCopy.length - 1];
-
-		for (let i = 1; i < this.speakerCards.length; i++) {
-			this.speakerCards[i] = speakerCardsCopy[i - 1];
-		}
-
-		let tl = gsap.timeline();
-
-		tl.fromTo(
-			this.cardContainer.current,
-			0.5,
-			{ autoAlpha: 0 },
-			{ autoAlpha: 1 }
-		);
-		tl.play();
-
-		this.forceUpdate();
-	};
-
-	componentDidMount() {
-		var intervalId = setInterval(this.moveCards, 10000);
-
-		this.setState({ intervalId: intervalId });
-	}
-
-	componentWillUnmount() {
-		clearInterval(this.state.intervalId);
-	}
+	// className={`${classes.arrow} ${classes.leftArrow}`}
+	// onClick={this.moveCardsRight}
 
 	render() {
 		const { classes } = this.props;
-		let edgeContainerClasses = `${classes.individualCardContainer} ${classes.edgeCardContainers}`;
-		let justOutsideMiddleCardContainerClasses = `${classes.individualCardContainer} ${classes.justOutsideMiddleCardContainer}`;
-		let mainContainerClasses = `${classes.individualCardContainer}`;
 
 		return (
 			<div className={classes.root}>
-				<img
-					src={require("../../images/Speakers/SpeakersSvgs/Rocket1.svg")}
-					alt="Rocket 1"
-					className={classes.rocket1}
-				/>
-				<img
-					src={require("../../images/Speakers/SpeakersSvgs/Rocket2.svg")}
-					alt="Rocket 2"
-					className={classes.rocket2}
-				/>
-
-				<img
-					src={require("../../images/Speakers/SpeakersSvgs/Cloud1.svg")}
-					alt="Cloud 1"
-					className={classes.cloud1}
-				/>
-
-				<img
-					src={require("../../images/Speakers/SpeakersSvgs/Cloud2.svg")}
-					alt="Cloud 2"
-					className={classes.cloud2}
-				/>
-
-				<img
-					src={require("../../images/Speakers/SpeakersSvgs/Cloud3.svg")}
-					alt="Cloud 3"
-					className={classes.cloud3}
-				/>
-
-				<img
-					src={require("../../images/Speakers/SpeakersSvgs/Cloud4.svg")}
-					alt="Cloud 4"
-					className={classes.cloud4}
-				/>
-
-				<img
-					src={require("../../images/Speakers/SpeakersSvgs/Cloud5.svg")}
-					alt="Cloud 5"
-					className={classes.cloud5}
-				/>
-				<div>
-					<Typography variant="h3" style={{ textAlign: "center" }}>
-						<Box fontStyle="bold" m={1}>
-							Speakers
-						</Box>
-					</Typography>
-					<div className={classes.cardContainer} ref={this.cardContainer}>
-						<div className={edgeContainerClasses}>{this.speakerCards[0]}</div>
-						<div className={justOutsideMiddleCardContainerClasses}>
-							{this.speakerCards[1]}
+				<Grid container>
+					<Grid item container xs={2} alignItems="center">
+						<svg
+							width="55"
+							height="55"
+							viewBox="0 0 55 55"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+							className={`${classes.arrow} ${classes.leftArrow}`}
+							onClick={this.moveCardsRight}
+						>
+							<rect
+								x="27.7949"
+								y="54.1138"
+								width="38.2535"
+								height="7.53022"
+								rx="3.76511"
+								transform="rotate(-135 27.7949 54.1138)"
+								fill="white"
+								className={classes.arrowPart}
+							/>
+							<rect
+								x="33.1201"
+								y="5.33972"
+								width="38.2535"
+								height="7.53022"
+								rx="3.76511"
+								transform="rotate(135 33.1201 5.33972)"
+								fill="white"
+								className={classes.arrowPart}
+							/>
+						</svg>
+					</Grid>
+					<Grid item container xs={8} direction="column">
+						<Typography variant="h3" align="center">
+							<Box fontStyle="bold" m={1}>
+								Speakers
+							</Box>
+						</Typography>
+						<div className={classes.main} ref={this.cardContainer}>
+							{this.speakerCards[0]}
 						</div>
-						<div className={mainContainerClasses}>{this.speakerCards[2]}</div>
-						<div className={justOutsideMiddleCardContainerClasses}>
-							{this.speakerCards[3]}
-						</div>
-						<div className={edgeContainerClasses}>{this.speakerCards[4]}</div>
-					</div>
-				</div>
+					</Grid>
+
+					<Grid item container xs={2} alignItems="center" justify="flex-end">
+						<svg
+							width="55"
+							height="55"
+							viewBox="0 0 55 55"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+							className={`${classes.arrow} ${classes.rightArrow}`}
+							onClick={this.moveCardsLeft}
+						>
+							<rect
+								x="27.7949"
+								y="54.1138"
+								width="38.2535"
+								height="7.53022"
+								rx="3.76511"
+								transform="rotate(-135 27.7949 54.1138)"
+								fill="white"
+								className={classes.arrowPart}
+							/>
+							<rect
+								x="33.1201"
+								y="5.33972"
+								width="38.2535"
+								height="7.53022"
+								rx="3.76511"
+								transform="rotate(135 33.1201 5.33972)"
+								fill="white"
+								className={classes.arrowPart}
+							/>
+						</svg>
+					</Grid>
+				</Grid>
 			</div>
 		);
 	}

@@ -6,11 +6,14 @@ import { makeStyles } from "@material-ui/core/styles";
 // Custom Components
 import Header from "./Header";
 
+import gsap from "gsap";
+
 const useStyles = makeStyles((theme) => ({
 	root: {
 		height: "90vh",
 		backgroundColor: theme.palette.primary.main,
 		color: theme.palette.primary.contrastText,
+		overflow: "hidden",
 	},
 
 	rootGrid: {
@@ -116,6 +119,76 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Landing({ sideMenuClickHandler }) {
 	const classes = useStyles();
+
+	const redPlanet = React.useRef(null);
+	const greenPlanet = React.useRef(null);
+	const yellowPlanet = React.useRef(null);
+
+	const rotatePlanets = () => {
+		let tl = gsap.timeline({ repeat: -1, repeatDelay: 0 });
+
+		tl.to(redPlanet.current, {
+			duration: 18,
+			rotate: "360deg",
+			ease: "none",
+		});
+
+		tl.to(
+			greenPlanet.current,
+			{
+				duration: 18,
+				rotate: "360deg",
+				ease: "none",
+			},
+			0
+		);
+
+		tl.to(
+			yellowPlanet.current,
+			{
+				duration: 18,
+				rotate: "360deg",
+				ease: "none",
+			},
+			0
+		);
+
+		return tl;
+	};
+
+	const starTwinkle = (star) => {
+		let tl = gsap.timeline({
+			repeat: -1,
+			delay: Math.floor(Math.random() * 5),
+			repeatDelay: Math.floor(Math.random() * 5),
+		});
+
+		tl.to(star, { fillOpacity: 0.3, duration: 1, ease: "none" });
+		tl.to(star, { fillOpacity: 1, duration: 1, ease: "none" }, 0);
+		tl.to(star, {
+			delay: Math.floor(Math.random() * 3),
+			fillOpacity: 0,
+			duration: 2,
+			ease: "none",
+		});
+
+		return tl;
+	};
+
+	const masterAnimation = () => {
+		let master = gsap.timeline({ repeat: -1 });
+
+		master.add(rotatePlanets(), 0);
+
+		for (let i = 1; i < 11; i++) {
+			master.add(starTwinkle(`#star${i}`, 0));
+		}
+
+		master.play();
+	};
+
+	React.useEffect(() => masterAnimation());
+
 	return (
 		<div className={classes.root}>
 			<Header sideMenuClickHandler={sideMenuClickHandler} />
@@ -125,17 +198,87 @@ export default function Landing({ sideMenuClickHandler }) {
 				className={classes.landingSvgs}
 			/>
 
-			<img
+			{/* <img
 				src={require("../../images/LandingSvgs/landingStars.svg")}
 				alt="Landing page stars"
 				className={classes.landingSvgs}
-			/>
+				ref={stars}
+			/> */}
+
+			<svg
+				width="100%"
+				height="100vh"
+				viewBox="0 0 1087 385"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+				className={classes.landingSvgs}
+			>
+				<circle
+					id="star1"
+					cx="1082"
+					cy="274"
+					r="5"
+					fill="white"
+					fillOpacity="0.3"
+				/>
+				<circle
+					id="star2"
+					cx="5"
+					cy="380"
+					r="5"
+					fill="white"
+					fillOpacity="0.3"
+				/>
+				<circle
+					id="star3"
+					cx="910"
+					cy="373"
+					r="5"
+					fill="white"
+					fillOpacity="0.3"
+				/>
+				<circle id="star4" cx="510" cy="278" r="5" fill="white" />
+				<circle
+					id="star5"
+					cx="491"
+					cy="5"
+					r="5"
+					fill="white"
+					fillOpacity="0.9"
+				/>
+				<circle
+					id="star6"
+					cx="804"
+					cy="85"
+					r="5"
+					fill="white"
+					fillOpacity="0.3"
+				/>
+				<circle id="star7" cx="819" cy="329" r="5" fill="white" />
+				<circle
+					id="star8"
+					cx="536"
+					cy="300"
+					r="5"
+					fill="white"
+					fillOpacity="0.5"
+				/>
+				<circle id="star9" cx="936" cy="129" r="5" fill="white" />
+				<circle
+					id="star10"
+					cx="819"
+					cy="329"
+					r="5"
+					fill="white"
+					fillOpacity="0.8"
+				/>
+			</svg>
 			<Grid container className={classes.rootGrid}>
 				<Grid
 					item
 					container
-					sm={6}
-					xs={12}
+					md={6}
+					sm={12}
 					direction="column"
 					alignItems="center"
 				>
@@ -163,16 +306,19 @@ export default function Landing({ sideMenuClickHandler }) {
 						src={require("../../images/LandingSvgs/Planets/RedPlanet.svg")}
 						alt="Red Planet"
 						className={`${classes.landingGraphic} ${classes.redPlanet}`}
+						ref={redPlanet}
 					/>
 					<img
 						src={require("../../images/LandingSvgs/Planets/YellowPlanet.svg")}
 						alt="Yellow Planet"
 						className={`${classes.landingGraphic} ${classes.yellowPlanet}`}
+						ref={yellowPlanet}
 					/>
 					<img
 						src={require("../../images/LandingSvgs/Planets/GreenPlanet.svg")}
 						alt="Green Planet"
 						className={`${classes.landingGraphic} ${classes.greenPlanet}`}
+						ref={greenPlanet}
 					/>
 					<img
 						src={require("../../images/LandingSvgs/Constellations/Constellation1.svg")}
