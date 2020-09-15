@@ -1,29 +1,39 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
+from django.shortcuts import render
+from django.contrib.auth import login
 from .forms import SignUpForm
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
-from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
-from .forms import UserProfileForm
+from datetime import datetime
+from .tokens import account_activation_token
+from .models import UserProfile
 
 
 def home(request):
     return render(request, 'home.html', {'user': request.user})
 
 
-def UserProfileView(request):
-    form = UserProfileForm(request.POST)
-    if form.is_valid():
-        form.save()
+def user_profile_edit(request):
+    if request.method == "POST":
+        userProfile = UserProfile.objects.get(user=request.user)
+        userProfile.school = request.POST['school']
+        userProfile.grad_year = request.POST['grad_year']
+        userProfile.gender = request.POST['gender']
+        userProfile.designation = request.POST['designation']
+        userProfile.desc = request.POST['desc']
+        userProfile.save()
+        return render(request, "home.html")
 
-    context = {
-        'form': form
-    }
+    if UserProfile.objects.filter(user=request.user) == 0:
+        userProfile = UserProfile(user=request.user, school="", grad_year="", gender="", designation="", desc="")
+        userProfile.save()
+    userProfile = UserProfile.objects.get(user=request.user)
+    context = userProfile.__dict__
+
     return render(request, 'profile.html', context)
 
 
@@ -62,8 +72,9 @@ def activate(request, uidb64, token):
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
         user.save()
+        userProfile = UserProfile(user=user)
+        userProfile.save()
         login(request, user)
-        # return redirect('home')
         return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
     else:
         return HttpResponse('Activation link is invalid!')
