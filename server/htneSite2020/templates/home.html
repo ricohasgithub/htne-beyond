@@ -9,6 +9,7 @@
 
 <body>
     <h1>Welcome {{ user.username }}</h1>
+    <a href={% url 'profile_edit' %}>Profile</a>
     <a href={% url 'logout' %}>Sign out</a>
 </body>
 </html>
