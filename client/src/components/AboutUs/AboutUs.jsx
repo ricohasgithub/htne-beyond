@@ -155,7 +155,7 @@ export default function AboutUs() {
 				>
 					<div>
 						<Typography variant="h3" align="center">
-							<Box fontStyle="bold" m={1}>
+							<Box fontStyle="bold" m={1} fontWeight="700">
 								About Us
 							</Box>
 						</Typography>

@@ -22,18 +22,22 @@ const useStyles = makeStyles((theme) => ({
 
 	registerBtn: {
 		borderRadius: "73px",
-		marginLeft: "0.5vw",
-		marginRight: "0.5vw",
+		margin: "0.5vh",
 		backgroundColor: "#F5C042",
 		color: "#FFFFFF",
 	},
 
-	sponsorBtn: {
+	partnerBtn: {
 		borderRadius: "73px",
-		marginLeft: "0.5vw",
-		marginRight: "0.5vw",
+		margin: "0.5vh",
 		color: "#FFFFFF",
 		backgroundColor: "#E07934",
+	},
+
+	landingInfo: {
+		[theme.breakpoints.up("md")]: {
+			marginTop: "10vh",
+		},
 	},
 
 	landingSvgs: {
@@ -53,6 +57,7 @@ const useStyles = makeStyles((theme) => ({
 
 		[theme.breakpoints.down("sm")]: {
 			left: "60vw",
+			top: " 50vh",
 		},
 	},
 
@@ -198,13 +203,6 @@ export default function Landing({ sideMenuClickHandler }) {
 				className={classes.landingSvgs}
 			/>
 
-			{/* <img
-				src={require("../../images/LandingSvgs/landingStars.svg")}
-				alt="Landing page stars"
-				className={classes.landingSvgs}
-				ref={stars}
-			/> */}
-
 			<svg
 				width="100%"
 				height="100vh"
@@ -281,24 +279,37 @@ export default function Landing({ sideMenuClickHandler }) {
 					sm={12}
 					direction="column"
 					alignItems="center"
+					className={classes.landingInfo}
 				>
 					<Typography variant="h3" align="center">
-						Hack the Northeast
+						<Box fontStyle="bold" m={1} fontWeight="700">
+							Hack the Northeast
+						</Box>
 					</Typography>
 					<Typography variant="h1">
-						<Box fontStyle="italic" m={1}>
+						<Box fontStyle="italic" m={1} fontWeight="700">
 							BEYOND
 						</Box>
 					</Typography>
-					<Typography variant="h6">Dec. 12-15 | Virtual Hackathon</Typography>
-					<div>
-						<Button variant="contained" className={classes.registerBtn}>
-							<Typography variant="subtitle1">Register</Typography>
-						</Button>
-						<Button variant="contained" className={classes.sponsorBtn}>
-							<Typography variant="subtitle1">Sponsor Us</Typography>
-						</Button>
-					</div>
+					<Typography variant="h6">
+						{" "}
+						<Box fontStyle="bold" m={1} fontWeight="700">
+							Dec. 12-15 | Virtual Hackathon
+						</Box>
+					</Typography>
+					<Button
+						variant="contained"
+						className={classes.registerBtn}
+						href="https://hackthenortheast.typeform.com/to/W6M5xScM?fbclid=IwAR0D12v19ZFEIKjTaYpKIPn4AqguAiPd2IxEvCWE2wp2e82br5l7_Nlipi4"
+					>
+						<Typography variant="subtitle1">
+							Become a Campus Ambassador
+						</Typography>
+					</Button>
+
+					<Button variant="contained" className={classes.partnerBtn} href="#">
+						<Typography variant="subtitle1">Partner with Us</Typography>
+					</Button>
 				</Grid>
 
 				<Grid item container sm={6} xs={12}>

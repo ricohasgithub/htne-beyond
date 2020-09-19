@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Card, CardContent, Typography } from "@material-ui/core";
+import { Card, CardContent, Typography, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme) => ({
 		color: theme.palette.primary.contrastText,
 		borderRadius: "5%",
 		transition: "transform 0.3s ease-out",
+		padding: "5%",
 
 		"&:hover": {
 			transform: "scale(1.25)",
@@ -22,8 +23,13 @@ const useStyles = makeStyles((theme) => ({
 
 	cardLogo: {
 		padding: 0,
+
 		height: "6vh",
 		width: "6vw",
+
+		[theme.breakpoints.up("lg")]: {
+			marginLeft: "-25px",
+		},
 	},
 }));
 
@@ -39,7 +45,16 @@ export default function TrackCard({ trackName, trackSummary }) {
 					className={classes.cardLogo}
 				/>
 
-				<Typography variant="h3">{trackName}</Typography>
+				<Typography variant="h4">
+					<Box
+						fontStyle="bold"
+						m={1}
+						fontWeight="700"
+						style={{ marginLeft: 0, marginRight: 0 }}
+					>
+						{trackName}
+					</Box>
+				</Typography>
 
 				<Typography variant="body1">{trackSummary}</Typography>
 			</CardContent>

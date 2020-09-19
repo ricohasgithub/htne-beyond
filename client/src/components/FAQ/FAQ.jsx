@@ -55,25 +55,6 @@ const useStyles = makeStyles((theme) => ({
 export default function FAQ() {
 	const classes = useStyles();
 
-	// const meteor1 = React.useRef(null);
-	// const meteor2 = React.useRef(null);
-	// const meteor3 = React.useRef(null);
-	// const meteor4 = React.useRef(null);
-	// const meteor5 = React.useRef(null);
-
-	// const moveMetors = () => {
-	// 	console.log("Moving");
-	// 	let tl = gsap.timeline({ repeat: -1 });
-
-	// 	tl.to(meteor1.current, { x: "+=59vw", duration: 0.5 });
-	// 	tl.to(meteor1.current, { x: "-1000", duration: 0.1 });
-	// 	tl.to(meteor1.current, { x: 0, duration: 0.5 });
-
-	// 	tl.play();
-	// };
-
-	// React.useEffect(() => moveMetors(), []);
-
 	return (
 		<div className={classes.root}>
 			<img
@@ -81,44 +62,9 @@ export default function FAQ() {
 				alt="Background"
 				className={classes.backgroundImg}
 			/>
-			{/* 
-			<img
-				src={require("../../images/FAQSvgs/Meteor1.svg")}
-				alt="Meteor 1"
-				className={`${classes.meteors} ${classes.meteor1}`}
-				ref={meteor1}
-			/>
-
-			<img
-				src={require("../../images/FAQSvgs/Meteor2.svg")}
-				alt="Meteor 2"
-				className={`${classes.meteors} ${classes.meteor2}`}
-				ref={meteor2}
-			/>
-
-			<img
-				src={require("../../images/FAQSvgs/Meteor3.svg")}
-				alt="Meteor 3"
-				className={`${classes.meteors} ${classes.meteor3}`}
-				ref={meteor3}
-			/>
-
-			<img
-				src={require("../../images/FAQSvgs/Meteor4.svg")}
-				alt="Meteor 4"
-				className={`${classes.meteors} ${classes.meteor4}`}
-				ref={meteor4}
-			/>
-
-			<img
-				src={require("../../images/FAQSvgs/Meteor5.svg")}
-				alt="Meteor 5"
-				className={`${classes.meteors} ${classes.meteor5}`}
-				ref={meteor5}
-			/> */}
 
 			<Typography variant="h3" align="center" style={{ paddingTop: "12.5%" }}>
-				<Box fontStyle="bold" m={1}>
+				<Box fontStyle="bold" m={1} fontWeight="700">
 					FAQ
 				</Box>
 			</Typography>

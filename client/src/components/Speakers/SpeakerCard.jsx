@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Grid, Typography, useMediaQuery } from "@material-ui/core";
+import { Grid, Typography, useMediaQuery, Box } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -57,7 +57,14 @@ export default function SpeakerCard({ speakerName, speakerSummary }) {
 					<Grid item container xs={6} direction="column" justify="space-around">
 						<div>
 							<Typography variant="h4" align={nameAlignment}>
-								{speakerName}
+								<Box
+									fontStyle="bold"
+									m={1}
+									fontWeight="700"
+									style={{ marginLeft: 0, marginRight: 0 }}
+								>
+									{speakerName}
+								</Box>
 							</Typography>
 							<Typography variant="body1" align={nameAlignment}>
 								{speakerSummary}
