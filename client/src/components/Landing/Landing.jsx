@@ -1,5 +1,6 @@
 import React from "react";
-
+import RoomIcon from '@material-ui/icons/Room';
+import PublicIcon from '@material-ui/icons/Public';
 import { Grid, Typography, Button, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -294,7 +295,15 @@ export default function Landing({ sideMenuClickHandler }) {
 					<Typography variant="h6">
 						{" "}
 						<Box fontStyle="bold" m={1} fontWeight="700">
-							Dec. 12-15 | Virtual Hackathon
+							Dec. 12-13 | Hybrid Hackathon   
+
+						</Box>
+						<Box fontWeight="420">
+						<RoomIcon/>
+							NYC, NY, USA
+							<br></br>
+							<PublicIcon/>
+							Anywhere, Worldwide
 						</Box>
 					</Typography>
 					<Button
@@ -307,7 +316,7 @@ export default function Landing({ sideMenuClickHandler }) {
 						</Typography>
 					</Button>
 
-					<Button variant="contained" className={classes.partnerBtn} href="#">
+					<Button variant="contained" className={classes.partnerBtn} href="mailto:htne-sponsorships@hackthene.com">
 						<Typography variant="subtitle1">Partner with Us</Typography>
 					</Button>
 				</Grid>

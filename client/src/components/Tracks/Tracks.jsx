@@ -46,7 +46,7 @@ export default function Tracks() {
 
 			<Typography variant="h3" className={classes.tracksTitle} align="center">
 				<Box fontStyle="bold" m={1} fontWeight="700">
-					Tracks
+					Your Mission
 				</Box>
 			</Typography>
 

@@ -82,7 +82,11 @@ export default function FAQ() {
 							answer="Placeholder text"
 						/>
 						<QuestionAnswer
-							question="When is Beyond?"
+							question="When is HTNE: Beyond?"
+							answer="Placeholder text"
+						/>
+						<QuestionAnswer
+							question="How does the Hybrid Format work?"
 							answer="Placeholder text"
 						/>
 					</Grid>
@@ -92,15 +96,19 @@ export default function FAQ() {
 					<Grid item xs={12}>
 						<QuestionAnswer
 							question="Who can attend?"
-							answer="Placeholder text"
+							answer="Every student at a High School or University worldwide is eligible to participate"
 						/>
 						<QuestionAnswer
 							question="What if I don't know how to code?"
 							answer="Placeholder text"
 						/>
 						<QuestionAnswer
-							question="I have more questions!"
+							question="How do I apply for the In Person part of the event?"
 							answer="Placeholder text"
+						/>
+						<QuestionAnswer
+							question="I have more questions!"
+							answer="Please reach out to support@hackthene.com for any additional concerns."
 						/>
 					</Grid>
 				</Grid>

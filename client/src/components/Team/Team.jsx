@@ -226,6 +226,7 @@ export default function Team() {
 					<Grid item container sm={4} xs={6} justify="center">
 						<TeamMember name={"First Last"} position={"Position"} />
 					</Grid>
+				
 				</Grid>
 			</div>
 		</div>
