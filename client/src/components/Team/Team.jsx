@@ -95,7 +95,12 @@ export default function Team() {
 			repeatDelay: Math.floor(Math.random() * 5),
 		});
 
-		tl.to(pack, { y: "+=20vh", autoAlpha: 0, duration: 12, ease: "none" }, 0);
+		tl.fromTo(pack, { autoAlpha: 0 }, { autoAlpha: 0.7, duration: 2 });
+		tl.to(
+			pack,
+			{ y: "+=20vh", autoAlpha: 0, duration: 12, ease: "none" },
+			"-=1.25"
+		);
 
 		return tl;
 	};
@@ -197,7 +202,7 @@ export default function Team() {
 
 			<div>
 				<Typography variant="h3" align="center">
-					<Box fontStyle="bold" m={1}>
+					<Box fontStyle="bold" m={1} fontWeight="700">
 						Team
 					</Box>
 				</Typography>
@@ -221,6 +226,7 @@ export default function Team() {
 					<Grid item container sm={4} xs={6} justify="center">
 						<TeamMember name={"First Last"} position={"Position"} />
 					</Grid>
+				
 				</Grid>
 			</div>
 		</div>

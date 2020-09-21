@@ -16,7 +16,10 @@ const styles = (theme) => ({
 		minHeight: "600px",
 		justifyContent: "space-around",
 		overflowX: "hidden",
-		marginTop: "20vh",
+
+		[theme.breakpoints.up("lg")]: {
+			marginTop: "20vh",
+		},
 	},
 
 	arrowPart: {
@@ -47,7 +50,7 @@ class Speakers extends Component {
 		super(props);
 		this.cardContainer = React.createRef(null);
 	}
-
+//Doesn't seem to work
 	moveCardsRight = () => {
 		let tl = gsap.timeline();
 
@@ -189,7 +192,7 @@ class Speakers extends Component {
 					</Grid>
 					<Grid item container xs={8} direction="column">
 						<Typography variant="h3" align="center">
-							<Box fontStyle="bold" m={1}>
+							<Box fontStyle="bold" m={1} fontWeight="700">
 								Speakers
 							</Box>
 						</Typography>

@@ -59,8 +59,7 @@ export default function Footer() {
 						align="left"
 						style={{ marginLeft: "5.5vw" }}
 					>
-						Lorem Ipsum is simply dummy text of the printing and typesetting
-						industry. Lorem Ipsum has been the industry's standard.
+						Made with ❤️ by Reezan Visram
 					</Typography>
 				</Grid>
 
@@ -74,21 +73,20 @@ export default function Footer() {
 				>
 					<Typography variant="h6">
 						<Box fontStyle="bold" m={1}>
-							Navigate
+							Get in Contact
 						</Box>
 					</Typography>
 
-					<AnchorLink href="#aboutus" className={classes.footerLink}>
-						<Typography variant="body2">About Us</Typography>
+					<AnchorLink href="mailto:htne-sponsorships@hackthene.com" className={classes.footerLink}>
+						<Typography variant="body2">Sponsor</Typography>
 					</AnchorLink>
-					<AnchorLink href="#tracks" className={classes.footerLink}>
-						<Typography variant="body2">Tracks</Typography>
+					<AnchorLink href="htne-logistics@hackthene.com" className={classes.footerLink}>
+						<Typography variant="body2">Mentorship</Typography>
 					</AnchorLink>
-					<AnchorLink href="#speakers" className={classes.footerLink}>
-						<Typography variant="body2">Speakers</Typography>
+					<AnchorLink href="htne-logistics@hackthene.com" className={classes.footerLink}>
+						<Typography variant="body2">Speak</Typography>
 					</AnchorLink>
 				</Grid>
-
 				<Grid
 					item
 					container
@@ -99,7 +97,7 @@ export default function Footer() {
 				>
 					<Typography variant="h6">
 						<Box fontStyle="bold" m={1}>
-							Contact
+							Follow us
 						</Box>
 					</Typography>
 
@@ -109,11 +107,11 @@ export default function Footer() {
 					>
 						<Typography variant="body2">Instagram</Typography>
 					</a>
-					<a href="/" className={classes.footerLink}>
-						<Typography variant="body2">LinkedIn</Typography>
+					<a href="https://www.facebook.com/hackthene" className={classes.footerLink}>
+						<Typography variant="body2">Facebook</Typography>
 					</a>
-					<a href="/" className={classes.footerLink}>
-						<Typography variant="body2">Devpost</Typography>
+					<a href="https://twitter.com/hackthene" className={classes.footerLink}>
+						<Typography variant="body2">Twitter</Typography>
 					</a>
 				</Grid>
 			</Grid>

@@ -9,7 +9,8 @@ import TrackCard from "./TrackCard";
 const useStyles = makeStyles((theme) => ({
 	root: {
 		marginTop: "5vh",
-		overflow: "hidden",
+		overflowX: "hidden",
+		paddingBottom: "5vh",
 	},
 
 	trackBackgroundSvgs: {
@@ -44,8 +45,8 @@ export default function Tracks() {
 			/>
 
 			<Typography variant="h3" className={classes.tracksTitle} align="center">
-				<Box fontStyle="bold" m={1}>
-					Tracks
+				<Box fontStyle="bold" m={1} fontWeight="700">
+					Your Mission
 				</Box>
 			</Typography>
 
@@ -56,7 +57,7 @@ export default function Tracks() {
 					container
 					xs={12}
 					sm={8}
-					spacing={4}
+					spacing={6}
 					justify="space-around"
 					style={{ margin: 0 }}
 				>

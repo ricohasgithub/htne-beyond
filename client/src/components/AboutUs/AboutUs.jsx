@@ -155,16 +155,13 @@ export default function AboutUs() {
 				>
 					<div>
 						<Typography variant="h3" align="center">
-							<Box fontStyle="bold" m={1}>
-								About Us
+							<Box fontStyle="bold" m={1} fontWeight="700">
+								Our Mission
 							</Box>
 						</Typography>
 
 						<Typography variant="h6" align="center">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-							vitae orci efficitur, pellentesque massa et, placerat eros. Lorem
-							ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
-							nulla in neque dignissim convallis sit amet nec felis.
+							To provide students an opportunity for accessible collaboration to foster innovation, diversity, and inclusivity. Created by students for students, we aim to empower and expand the student developer community by providing resources to explore technology and turn ideas into reality. Whether you're completely new to coding or a seasoned hacker, join us for a weekend full of learning, connection, and fun.  
 						</Typography>
 					</div>
 					<div className={classes.satelliteContainer} ref={satelliteContainer}>
