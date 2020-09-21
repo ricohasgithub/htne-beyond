@@ -17,6 +17,11 @@ const useStyles = makeStyles((theme) => ({
 		transition: "transform 0.3s ease",
 	},
 
+	headerLink: {
+		color: "white",
+		textDecoration: "none",
+	},
+
 	sideMenuOpen: {
 		transform: "translateX(0%)",
 	},

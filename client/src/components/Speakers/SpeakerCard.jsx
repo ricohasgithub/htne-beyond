@@ -47,9 +47,10 @@ export default function SpeakerCard({ speakerName, speakerSummary }) {
 						xs={6}
 						justify="space-around"
 						alignItems="center"
+						style={{ marginBottom: "10%" }}
 					>
 						<img
-							src={require("../../images/Speakers/placeholder.png")}
+							src={require(`../../images/Speakers/${speakerName}.png`)}
 							alt={speakerName}
 							className={classes.speakerPhoto}
 						/>

@@ -14,7 +14,7 @@ const styles = (theme) => ({
 		flexDirection: "column",
 		height: "80vh",
 		minHeight: "600px",
-		justifyContent: "space-around",
+		justifyContent: "space-evenly",
 		overflowX: "hidden",
 
 		[theme.breakpoints.up("lg")]: {
@@ -46,17 +46,22 @@ const styles = (theme) => ({
 });
 
 class Speakers extends Component {
+	state = {
+		intervalId: null,
+		inTransition: null,
+	};
+
 	constructor(props) {
 		super(props);
 		this.cardContainer = React.createRef(null);
 	}
-//Doesn't seem to work
+
 	moveCardsRight = () => {
 		let tl = gsap.timeline();
 
 		tl.to(this.cardContainer.current, {
 			autoAlpha: 0,
-			x: -1500,
+			x: "-60vw",
 			duration: 1,
 		});
 
@@ -86,7 +91,7 @@ class Speakers extends Component {
 
 		tl.to(this.cardContainer.current, {
 			autoAlpha: 0,
-			x: 1500,
+			x: "60vw",
 			duration: 1,
 		});
 
@@ -113,41 +118,51 @@ class Speakers extends Component {
 
 	speakerCards = [
 		<SpeakerCard
-			speakerName={"Name1"}
+			speakerName={"To Be Determined"}
 			speakerSummary={
-				"Lorem ipsum dolor sit amet, consectet adipiscing elit. Duis vitae orci efficitur, pellentesque.Lorem ipsum dolor sit amet, consectet adipiscing elit. Duis vitae orci efficitur, pellentesque."
+				"We're working hard to provide you with talks and workshops from the highest quality and most thought provoking technical leaders in the field. If you are interested in speaking @Beyond please send us an email at hello@hackthene.com"
 			}
 			key={0}
 		/>,
 		<SpeakerCard
-			speakerName={"Name2"}
+			speakerName={"To Be Determined"}
 			speakerSummary={
-				"Lorem ipsum dolor sit amet, consectet adipiscing elit. Duis vitae orci efficitur, pellentesque.Lorem ipsum dolor sit amet, consectet adipiscing elit. Duis vitae orci efficitur, pellentesque."
+				"We're working hard to provide you with talks and workshops from the highest quality and most thought provoking technical leaders in the field. If you are interested in speaking @Beyond please send us an email at hello@hackthene.com"
 			}
 			key={1}
 		/>,
 		<SpeakerCard
-			speakerName={"Name3"}
+			speakerName={"To Be Determined"}
 			speakerSummary={
-				"Lorem ipsum dolor sit amet, consectet adipiscing elit. Duis vitae orci efficitur, pellentesque.Lorem ipsum dolor sit amet, consectet adipiscing elit. Duis vitae orci efficitur, pellentesque."
+				"We're working hard to provide you with talks and workshops from the highest quality and most thought provoking technical leaders in the field. If you are interested in speaking @Beyond please send us an email at hello@hackthene.com"
 			}
 			key={2}
 		/>,
 		<SpeakerCard
-			speakerName={"Name4"}
+			speakerName={"To Be Determined"}
 			speakerSummary={
-				"Lorem ipsum dolor sit amet, consectet adipiscing elit. Duis vitae orci efficitur, pellentesque.Lorem ipsum dolor sit amet, consectet adipiscing elit. Duis vitae orci efficitur, pellentesque."
+				"We're working hard to provide you with talks and workshops from the highest quality and most thought provoking technical leaders in the field. If you are interested in speaking @Beyond please send us an email at hello@hackthene.com"
 			}
 			key={3}
 		/>,
 		<SpeakerCard
-			speakerName={"Name5"}
+			speakerName={"To Be Determined"}
 			speakerSummary={
-				"Lorem ipsum dolor sit amet, consectet adipiscing elit. Duis vitae orci efficitur, pellentesque.Lorem ipsum dolor sit amet, consectet adipiscing elit. Duis vitae orci efficitur, pellentesque."
+				"We're working hard to provide you with talks and workshops from the highest quality and most thought provoking technical leaders in the field. If you are interested in speaking @Beyond please send us an email at hello@hackthene.com"
 			}
 			key={4}
 		/>,
 	];
+
+	componentDidMount() {
+		var intervalId = setInterval(this.moveCardsLeft, 10000);
+
+		this.setState({ intervalId: intervalId });
+	}
+
+	componentWillUnmount() {
+		clearInterval(this.state.intervalId);
+	}
 
 	// className={`${classes.arrow} ${classes.leftArrow}`}
 	// onClick={this.moveCardsRight}
@@ -157,6 +172,11 @@ class Speakers extends Component {
 
 		return (
 			<div className={classes.root}>
+				<Typography variant="h3" align="center">
+					<Box fontStyle="bold" m={1} fontWeight="700">
+						Speakers
+					</Box>
+				</Typography>
 				<Grid container>
 					<Grid item container xs={2} alignItems="center">
 						<svg
@@ -191,11 +211,6 @@ class Speakers extends Component {
 						</svg>
 					</Grid>
 					<Grid item container xs={8} direction="column">
-						<Typography variant="h3" align="center">
-							<Box fontStyle="bold" m={1} fontWeight="700">
-								Speakers
-							</Box>
-						</Typography>
 						<div className={classes.main} ref={this.cardContainer}>
 							{this.speakerCards[0]}
 						</div>

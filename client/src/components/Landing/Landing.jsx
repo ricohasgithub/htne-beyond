@@ -1,6 +1,6 @@
 import React from "react";
-import RoomIcon from '@material-ui/icons/Room';
-import PublicIcon from '@material-ui/icons/Public';
+import RoomIcon from "@material-ui/icons/Room";
+import PublicIcon from "@material-ui/icons/Public";
 import { Grid, Typography, Button, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -11,10 +11,14 @@ import gsap from "gsap";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		height: "90vh",
 		backgroundColor: theme.palette.primary.main,
 		color: theme.palette.primary.contrastText,
 		overflow: "hidden",
+	},
+
+	wordMark: {
+		width: "100px",
+		height: "auto",
 	},
 
 	rootGrid: {
@@ -58,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
 
 		[theme.breakpoints.down("sm")]: {
 			left: "60vw",
-			top: " 50vh",
+			top: " 70vh",
 		},
 	},
 
@@ -91,8 +95,8 @@ const useStyles = makeStyles((theme) => ({
 		left: "65vw",
 
 		[theme.breakpoints.down("sm")]: {
-			left: "25vw",
-			top: "55vh",
+			left: "15vw",
+			top: "75vh",
 			height: "10vh",
 			width: "10vw",
 		},
@@ -287,22 +291,26 @@ export default function Landing({ sideMenuClickHandler }) {
 							Hack the Northeast
 						</Box>
 					</Typography>
-					<Typography variant="h1">
+					{/* <Typography variant="h1">
 						<Box fontStyle="italic" m={1} fontWeight="700">
 							BEYOND
 						</Box>
-					</Typography>
+					</Typography> */}
+					<img
+						src={require("../../images/LandingSvgs/BeyondWordmark.png")}
+						alt="Beyond Wordmark"
+						className={classes.wordMark}
+					/>
 					<Typography variant="h6">
 						{" "}
 						<Box fontStyle="bold" m={1} fontWeight="700">
-							Dec. 12-13 | Hybrid Hackathon   
-
+							Dec. 12-13 | Hybrid Hackathon
 						</Box>
 						<Box fontWeight="420">
-						<RoomIcon/>
+							<RoomIcon />
 							NYC, NY, USA
 							<br></br>
-							<PublicIcon/>
+							<PublicIcon />
 							Anywhere, Worldwide
 						</Box>
 					</Typography>
@@ -316,7 +324,11 @@ export default function Landing({ sideMenuClickHandler }) {
 						</Typography>
 					</Button>
 
-					<Button variant="contained" className={classes.partnerBtn} href="mailto:htne-sponsorships@hackthene.com">
+					<Button
+						variant="contained"
+						className={classes.partnerBtn}
+						href="mailto:htne-sponsorships@hackthene.com"
+					>
 						<Typography variant="subtitle1">Partner with Us</Typography>
 					</Button>
 				</Grid>

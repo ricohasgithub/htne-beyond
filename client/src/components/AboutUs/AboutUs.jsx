@@ -9,9 +9,10 @@ const useStyles = makeStyles((theme) => ({
 	root: {
 		display: "flex",
 		alignItems: "center",
+		height: "100vh",
 		marginTop: "20vh",
-		height: "60vh",
-		overflow: "hidden",
+		overflowX: "hidden",
+		overflowY: "visible",
 	},
 
 	aboutUsSvg: {
@@ -161,7 +162,13 @@ export default function AboutUs() {
 						</Typography>
 
 						<Typography variant="h6" align="center">
-							To provide students an opportunity for accessible collaboration to foster innovation, diversity, and inclusivity. Created by students for students, we aim to empower and expand the student developer community by providing resources to explore technology and turn ideas into reality. Whether you're completely new to coding or a seasoned hacker, join us for a weekend full of learning, connection, and fun.  
+							To provide students an opportunity for accessible collaboration to
+							foster innovation, diversity, and inclusivity. Created by students
+							for students, we aim to empower and expand the student developer
+							community by providing resources to explore technology and turn
+							ideas into reality. Whether you're completely new to coding or a
+							seasoned hacker, join us for a weekend full of learning,
+							connection, and fun.
 						</Typography>
 					</div>
 					<div className={classes.satelliteContainer} ref={satelliteContainer}>
