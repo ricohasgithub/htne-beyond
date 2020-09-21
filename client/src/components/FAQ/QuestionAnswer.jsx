@@ -12,6 +12,9 @@ const useStyles = makeStyles((theme) => ({
 			cursor: "pointer",
 			color: "#57b9ff",
 		},
+
+		paddingLeft: "5%",
+		paddingRight: "5%",
 	},
 
 	answer: {

@@ -14,6 +14,8 @@ const useStyles = makeStyles((theme) => ({
 	logoFile: {
 		width: "25vw",
 		height: "25vh",
+		minWidth: "50px",
+		minHeight: "50px",
 	},
 
 	graphic: {

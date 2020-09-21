@@ -4,20 +4,21 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import QuestionAnswer from "./QuestionAnswer";
 
+import BackgroundImage from "../../images/FAQSvgs/FAQBackground.svg";
+
 const useStyles = makeStyles((theme) => ({
 	root: {
-		height: "100vh",
 		overflow: "hidden",
-	},
+		height: "120vh",
 
-	backgroundImg: {
-		position: "absolute",
-		height: "100%",
-		width: "100%",
-		zIndex: -1,
+		display: "flex",
+		flexDirection: "column",
+		justifyContent: "space-around",
 
-		[theme.breakpoints.down("sm")]: {
-			display: "none",
+		[theme.breakpoints.up("md")]: {
+			backgroundImage: `url(${BackgroundImage})`,
+			backgroundSize: "100% 100%",
+			backgroundRepeat: "no-repeat",
 		},
 	},
 
@@ -57,63 +58,58 @@ export default function FAQ() {
 
 	return (
 		<div className={classes.root}>
-			<img
-				src={require("../../images/FAQSvgs/FAQBackground.svg")}
-				alt="Background"
-				className={classes.backgroundImg}
-			/>
-
-			<Typography variant="h3" align="center" style={{ paddingTop: "12.5%" }}>
-				<Box fontStyle="bold" m={1} fontWeight="700">
-					FAQ
-				</Box>
-			</Typography>
-
-			<Grid container>
-				<Grid item sm={2} />
-				<Grid item container sm={4}>
-					<Grid item xs={12}>
-						<QuestionAnswer
-							question="What is a Hackathon?"
-							answer="Placeholder text"
-						/>
-						<QuestionAnswer
-							question="What if I don't have a team?"
-							answer="Placeholder text"
-						/>
-						<QuestionAnswer
-							question="When is HTNE: Beyond?"
-							answer="Placeholder text"
-						/>
-						<QuestionAnswer
-							question="How does the Hybrid Format work?"
-							answer="Placeholder text"
-						/>
+			<div>
+				<Typography variant="h3" align="center">
+					<Box fontStyle="bold" m={1} fontWeight="700">
+						FAQ
+					</Box>
+				</Typography>
+				<Grid container>
+					<Grid item sm={2} />
+					<Grid item container sm={4}>
+						<Grid item xs={12}>
+							<QuestionAnswer
+								question="What is a Hackathon?"
+								answer="Placeholder text"
+							/>
+							<QuestionAnswer
+								question="What if I don't have a team?"
+								answer="Placeholder text"
+							/>
+							<QuestionAnswer
+								question="When is HTNE: Beyond?"
+								answer="Placeholder text"
+							/>
+							<QuestionAnswer
+								question="How does the Hybrid Format work?"
+								answer="Placeholder text"
+							/>
+						</Grid>
 					</Grid>
-				</Grid>
 
-				<Grid item container sm={4}>
-					<Grid item xs={12}>
-						<QuestionAnswer
-							question="Who can attend?"
-							answer="Every student at a High School or University worldwide is eligible to participate"
-						/>
-						<QuestionAnswer
-							question="What if I don't know how to code?"
-							answer="Placeholder text"
-						/>
-						<QuestionAnswer
-							question="How do I apply for the In Person part of the event?"
-							answer="Placeholder text"
-						/>
-						<QuestionAnswer
-							question="I have more questions!"
-							answer="Please reach out to support@hackthene.com for any additional concerns."
-						/>
+					<Grid item container sm={4}>
+						<Grid item xs={12}>
+							<QuestionAnswer
+								question="Who can attend?"
+								answer="Every student at a High School or University worldwide is eligible to participate"
+							/>
+							<QuestionAnswer
+								question="What if I don't know how to code?"
+								answer="Placeholder text"
+							/>
+							<QuestionAnswer
+								question="How do I apply for the In Person part of the event?"
+								answer="Placeholder text"
+							/>
+							<QuestionAnswer
+								question="I have more questions!"
+								answer="Please reach out to support@hackthene.com for any additional concerns."
+							/>
+						</Grid>
 					</Grid>
+					<Grid item sm={2} />
 				</Grid>
-				<Grid item sm={2} />
-			</Grid>
+			</div>
 		</div>
 	);
 }

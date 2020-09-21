@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 		alignItems: "center",
 		justifyContent: "space-around",
 		overflow: "hidden",
-		height: "80vh",
+		height: "150vh",
 	},
 
 	package: {
@@ -150,27 +150,27 @@ export default function Team() {
 	return (
 		<div className={classes.root}>
 			<img
-				src={require("../../images/TeamSvgs/Package1.svg")}
+				src={require("../../images/Team/TeamSvgs/Package1.svg")}
 				alt="Package 1"
 				className={`${classes.package} ${classes.package1}`}
 				ref={package1}
 			/>
 
 			<img
-				src={require("../../images/TeamSvgs/Package1.svg")}
+				src={require("../../images/Team/TeamSvgs/Package1.svg")}
 				alt="Package 2"
 				className={`${classes.package} ${classes.package2}`}
 				ref={package2}
 			/>
 
 			<img
-				src={require("../../images/TeamSvgs/Package1.svg")}
+				src={require("../../images/Team/TeamSvgs/Package1.svg")}
 				alt="Package 3"
 				className={`${classes.package} ${classes.package3}`}
 				ref={package3}
 			/>
 
-			<div style={{ position: "absolute" }}>
+			<div style={{ position: "absolute", zIndex: -1 }}>
 				<img
 					src={require("../../images/Speakers/SpeakersSvgs/Cloud2.svg")}
 					alt="Cloud 1"
@@ -208,25 +208,111 @@ export default function Team() {
 				</Typography>
 
 				<Grid container>
-					<Grid item container sm={4} xs={6} justify="center">
-						<TeamMember name={"First Last"} position={"Position"} />
+					<Grid item xs={1} />
+					<Grid item container xs={10} justify="space-around">
+						<Grid item container sm={3} xs={6} justify="space-around">
+							<TeamMember
+								firstName={"Omar"}
+								lastName={"Abdullah"}
+								position={"Co-Founder"}
+							/>
+						</Grid>
+						<Grid item container sm={3} xs={6} justify="space-around">
+							<TeamMember
+								firstName={"David"}
+								lastName={"Zhang"}
+								position={"Director"}
+							/>
+						</Grid>
+						<Grid item container sm={3} xs={6} justify="center">
+							<TeamMember
+								firstName={"Leroy"}
+								lastName={"Shaigorodsky"}
+								position={"Co-Director of Graphic Design"}
+							/>
+						</Grid>
+						<Grid item container sm={3} xs={6} justify="center">
+							<TeamMember
+								firstName={"Rachelle"}
+								lastName={"Hu"}
+								position={"Co-Director of Graphic Design"}
+							/>
+						</Grid>
+						<Grid item container sm={3} xs={6} justify="center">
+							<TeamMember
+								firstName={"Claire"}
+								lastName={"Cho"}
+								position={"Co-Director of Logistics"}
+							/>
+						</Grid>
+						<Grid item container sm={3} xs={6} justify="center">
+							<TeamMember
+								firstName={"Rico"}
+								lastName={"Zhu"}
+								position={"Director of Technology"}
+							/>
+						</Grid>
+						<Grid item container sm={3} xs={6} justify="center">
+							<TeamMember
+								firstName={"Lucy"}
+								lastName={"Xu"}
+								position={"Co-Director of Logistics"}
+							/>
+						</Grid>
+						<Grid item container sm={3} xs={6} justify="center">
+							<TeamMember firstName={"Adriana"} position={"Position"} />
+						</Grid>
+						<Grid item container sm={3} xs={6} justify="center">
+							<TeamMember
+								firstName={"Saadwi"}
+								lastName={"Balaji"}
+								position={"Member of Graphic Design and Public Relations"}
+							/>
+						</Grid>
+						<Grid item container sm={3} xs={6} justify="center">
+							<TeamMember
+								firstName={"Reezan"}
+								lastName={"Visram"}
+								position={"Frontend Developer"}
+							/>
+						</Grid>
+						<Grid item container sm={3} xs={6} justify="center">
+							<TeamMember
+								firstName={"Fara"}
+								lastName={"Yan"}
+								position={"Member of Graphic Design"}
+							/>
+						</Grid>
+						<Grid item container sm={3} xs={6} justify="center">
+							<TeamMember
+								firstName={"Malek"}
+								lastName={"Wabha"}
+								position={"Sponshorships Coordinator and Member of Logistics"}
+							/>
+						</Grid>
+						<Grid item container sm={3} xs={6} justify="center">
+							<TeamMember
+								firstName={"Will"}
+								lastName={"Feldman"}
+								position={"Member of Graphic Design and Technology"}
+							/>
+						</Grid>
+						<Grid item container sm={3} xs={6} justify="center">
+							<TeamMember
+								firstName={"Rahul"}
+								lastName={"Sunil"}
+								position={"Backend Developer"}
+							/>
+						</Grid>
+						<Grid item container sm={3} xs={6} justify="center">
+							<TeamMember
+								firstName={"Bhavya"}
+								lastName={"Ghuduru"}
+								position={"Member of Logistics"}
+							/>
+						</Grid>
 					</Grid>
-					<Grid item container sm={4} xs={6} justify="center">
-						<TeamMember name={"First Last"} position={"Position"} />
-					</Grid>
-					<Grid item container sm={4} xs={6} justify="center">
-						<TeamMember name={"First Last"} position={"Position"} />
-					</Grid>
-					<Grid item container sm={4} xs={6} justify="center">
-						<TeamMember name={"First Last"} position={"Position"} />
-					</Grid>
-					<Grid item container sm={4} xs={6} justify="center">
-						<TeamMember name={"First Last"} position={"Position"} />
-					</Grid>
-					<Grid item container sm={4} xs={6} justify="center">
-						<TeamMember name={"First Last"} position={"Position"} />
-					</Grid>
-				
+					<Grid item xs={1} />
 				</Grid>
 			</div>
 		</div>

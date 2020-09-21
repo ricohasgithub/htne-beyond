@@ -10,7 +10,6 @@ import FooterBackground from "../../images/FooterSvgs/FooterBackground.svg";
 const useStyles = makeStyles((theme) => ({
 	root: {
 		width: "100%",
-		height: "50vh",
 		backgroundImage: `url(${FooterBackground})`,
 		backgroundSize: "cover",
 		overflow: "hidden",
@@ -59,7 +58,11 @@ export default function Footer() {
 						align="left"
 						style={{ marginLeft: "5.5vw" }}
 					>
-						Made with ❤️ by Reezan Visram
+						Made with{" "}
+						<span role="img" aria-label="heart">
+							❤️
+						</span>{" "}
+						by Reezan Visram
 					</Typography>
 				</Grid>
 
@@ -77,13 +80,22 @@ export default function Footer() {
 						</Box>
 					</Typography>
 
-					<AnchorLink href="mailto:htne-sponsorships@hackthene.com" className={classes.footerLink}>
+					<AnchorLink
+						href="mailto:htne-sponsorships@hackthene.com"
+						className={classes.footerLink}
+					>
 						<Typography variant="body2">Sponsor</Typography>
 					</AnchorLink>
-					<AnchorLink href="htne-logistics@hackthene.com" className={classes.footerLink}>
+					<AnchorLink
+						href="htne-logistics@hackthene.com"
+						className={classes.footerLink}
+					>
 						<Typography variant="body2">Mentorship</Typography>
 					</AnchorLink>
-					<AnchorLink href="htne-logistics@hackthene.com" className={classes.footerLink}>
+					<AnchorLink
+						href="htne-logistics@hackthene.com"
+						className={classes.footerLink}
+					>
 						<Typography variant="body2">Speak</Typography>
 					</AnchorLink>
 				</Grid>
@@ -107,10 +119,16 @@ export default function Footer() {
 					>
 						<Typography variant="body2">Instagram</Typography>
 					</a>
-					<a href="https://www.facebook.com/hackthene" className={classes.footerLink}>
+					<a
+						href="https://www.facebook.com/hackthene"
+						className={classes.footerLink}
+					>
 						<Typography variant="body2">Facebook</Typography>
 					</a>
-					<a href="https://twitter.com/hackthene" className={classes.footerLink}>
+					<a
+						href="https://twitter.com/hackthene"
+						className={classes.footerLink}
+					>
 						<Typography variant="body2">Twitter</Typography>
 					</a>
 				</Grid>
